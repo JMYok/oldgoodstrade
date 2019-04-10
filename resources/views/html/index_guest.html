@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="9ohAtwTmU3x4CTpdP1HHzAnRplJO1u7gWMfOu27b">
+    <title>商品列表 - 二手物品交易系统</title>
+    <!-- 样式 -->
+    <link href="/css/app.css?id=4c2e9f03a0e67c857b93" rel="stylesheet">
+</head>
+<body>
+    <div id="app" class="products-index-page">
+        <nav class="navbar navbar-default navbar-static-top navbar-orange">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand navbar-font" href="http://oldgoodstrade.test">
+              <span class="glyphicon glyphicon-phone" aria-hidden="true"></span>
+                二手数码交易
+            </a>
+        </div>
+        <div class="collapse navbar-collapse" id="app-navbar-collapse">
+            <ul class="nav navbar-nav">
+              <li>
+                  <a href="#" class="navbar-font">网站特点</a>
+              </li>
+              <li>
+                  <a href="#" class="navbar-font">联系我们</a>
+              </li>
+              <li>
+                  <a href="#" class="navbar-font">FAQ</a>
+              </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a id="ranklist" href="#" class="dropdown-toggle navbar-font" data-toggle="dropdown" role="button" aria-expanded="false">排行榜</a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li>
+                            <a href="http://oldgoodstrade.test/rankingsale">销量排行</a>
+                        </li>
+                        <li>
+                            <a href="http://oldgoodstrade.test/rankingpoint">评分排行</a>
+                        </li>
+                    </ul>
+                </li>
+                <!-- 登录注册链接开始 -->
+                                    <li><a href="http://oldgoodstrade.test/login" class="navbar-font">登录</a></li>
+                    <li><a href="http://oldgoodstrade.test/register" class="navbar-font">注册</a></li>
+                                <!-- 登录注册链接结束 -->
+            </ul>
+        </div>
+    </div>
+</nav>
+        <div class="container">
+            <div class="row">
+<div class="col-lg-10 col-lg-offset-1">
+<div class="panel panel-default">
+  <div class="panel-body">
+    <!-- 筛选组件开始 -->
+    <div class="row">
+      <form action="http://oldgoodstrade.test/products" class="form-inline search-form">
+        <input type="text" class="form-control input-sm" name="search" placeholder="搜索">
+        <button class="btn btn-primary btn-sm">搜索</button>
+        <select name="order" class="form-control input-sm pull-right">
+          <option value="">排序方式</option>
+          <option value="price_asc">价格从低到高</option>
+          <option value="price_desc">价格从高到低</option>
+          <option value="sold_count_desc">销量从高到低</option>
+          <option value="sold_count_asc">销量从低到高</option>
+          <option value="rating_desc">评价从高到低</option>
+          <option value="rating_asc">评价从低到高</option>
+        </select>
+      </form>
+    </div>
+    <!-- 筛选组件结束 -->
+    <div class="row products-list">
+            <div class="col-xs-3 product-item">
+        <div class="product-content">
+          <div class="top">
+            <div class="img">
+              <a href="http://oldgoodstrade.test/products/1">
+                <img src="https://iocaffcdn.phphub.org/uploads/images/201806/01/5320/C0bVuKB2nt.jpg" alt="">
+              </a>
+            </div>
+            <div class="price"><b>￥</b>1303.00</div>
+            <div class="title">
+                  <a href="http://oldgoodstrade.test/products/1">sapiente</a>
+            </div>
+          </div>
+          <div class="bottom">
+            <div class="sold_count">销量 <span>1647笔</span></div>
+            <div class="review_count">评价 <span>0</span></div>
+          </div>
+        </div>
+      </div>
+            <div class="col-xs-3 product-item">
+        <div class="product-content">
+          <div class="top">
+            <div class="img">
+              <a href="http://oldgoodstrade.test/products/2">
+                <img src="https://iocaffcdn.phphub.org/uploads/images/201806/01/5320/C0bVuKB2nt.jpg" alt="">
+              </a>
+            </div>
+            <div class="price"><b>￥</b>471.00</div>
+            <div class="title">
+                  <a href="http://oldgoodstrade.test/products/2">et</a>
+            </div>
+          </div>
+          <div class="bottom">
+            <div class="sold_count">销量 <span>317笔</span></div>
+            <div class="review_count">评价 <span>0</span></div>
+          </div>
+        </div>
+      </div>
+            <div class="col-xs-3 product-item">
+        <div class="product-content">
+          <div class="top">
+            <div class="img">
+              <a href="http://oldgoodstrade.test/products/3">
+                <img src="https://iocaffcdn.phphub.org/uploads/images/201806/01/5320/2JMRaFwRpo.jpg" alt="">
+              </a>
+            </div>
+            <div class="price"><b>￥</b>2649.00</div>
+            <div class="title">
+                  <a href="http://oldgoodstrade.test/products/3">non</a>
+            </div>
+          </div>
+          <div class="bottom">
+            <div class="sold_count">销量 <span>5笔</span></div>
+            <div class="review_count">评价 <span>0</span></div>
+          </div>
+        </div>
+      </div>
+            <div class="col-xs-3 product-item">
+        <div class="product-content">
+          <div class="top">
+            <div class="img">
+              <a href="http://oldgoodstrade.test/products/4">
+                <img src="https://iocaffcdn.phphub.org/uploads/images/201806/01/5320/7kG1HekGK6.jpg" alt="">
+              </a>
+            </div>
+            <div class="price"><b>￥</b>948.00</div>
+            <div class="title">
+                  <a href="http://oldgoodstrade.test/products/4">perspiciatis</a>
+            </div>
+          </div>
+          <div class="bottom">
+            <div class="sold_count">销量 <span>310笔</span></div>
+            <div class="review_count">评价 <span>0</span></div>
+          </div>
+        </div>
+      </div>
+            <div class="col-xs-3 product-item">
+        <div class="product-content">
+          <div class="top">
+            <div class="img">
+              <a href="http://oldgoodstrade.test/products/5">
+                <img src="https://iocaffcdn.phphub.org/uploads/images/201806/01/5320/pa7DrV43Mw.jpg" alt="">
+              </a>
+            </div>
+            <div class="price"><b>￥</b>1543.00</div>
+            <div class="title">
+                  <a href="http://oldgoodstrade.test/products/5">id</a>
+            </div>
+          </div>
+          <div class="bottom">
+            <div class="sold_count">销量 <span>741笔</span></div>
+            <div class="review_count">评价 <span>0</span></div>
+          </div>
+        </div>
+      </div>
+            <div class="col-xs-3 product-item">
+        <div class="product-content">
+          <div class="top">
+            <div class="img">
+              <a href="http://oldgoodstrade.test/products/6">
+                <img src="https://iocaffcdn.phphub.org/uploads/images/201806/01/5320/pa7DrV43Mw.jpg" alt="">
+              </a>
+            </div>
+            <div class="price"><b>￥</b>4452.00</div>
+            <div class="title">
+                  <a href="http://oldgoodstrade.test/products/6">rerum</a>
+            </div>
+          </div>
+          <div class="bottom">
+            <div class="sold_count">销量 <span>329笔</span></div>
+            <div class="review_count">评价 <span>0</span></div>
+          </div>
+        </div>
+      </div>
+            <div class="col-xs-3 product-item">
+        <div class="product-content">
+          <div class="top">
+            <div class="img">
+              <a href="http://oldgoodstrade.test/products/7">
+                <img src="https://iocaffcdn.phphub.org/uploads/images/201806/01/5320/r3BNRe4zXG.jpg" alt="">
+              </a>
+            </div>
+            <div class="price"><b>￥</b>2123.00</div>
+            <div class="title">
+                  <a href="http://oldgoodstrade.test/products/7">quaerat</a>
+            </div>
+          </div>
+          <div class="bottom">
+            <div class="sold_count">销量 <span>1588笔</span></div>
+            <div class="review_count">评价 <span>0</span></div>
+          </div>
+        </div>
+      </div>
+            <div class="col-xs-3 product-item">
+        <div class="product-content">
+          <div class="top">
+            <div class="img">
+              <a href="http://oldgoodstrade.test/products/8">
+                <img src="https://iocaffcdn.phphub.org/uploads/images/201806/01/5320/2JMRaFwRpo.jpg" alt="">
+              </a>
+            </div>
+            <div class="price"><b>￥</b>3152.00</div>
+            <div class="title">
+                  <a href="http://oldgoodstrade.test/products/8">et</a>
+            </div>
+          </div>
+          <div class="bottom">
+            <div class="sold_count">销量 <span>1135笔</span></div>
+            <div class="review_count">评价 <span>0</span></div>
+          </div>
+        </div>
+      </div>
+            <div class="col-xs-3 product-item">
+        <div class="product-content">
+          <div class="top">
+            <div class="img">
+              <a href="http://oldgoodstrade.test/products/9">
+                <img src="https://iocaffcdn.phphub.org/uploads/images/201806/01/5320/XrtIwzrxj7.jpg" alt="">
+              </a>
+            </div>
+            <div class="price"><b>￥</b>1638.00</div>
+            <div class="title">
+                  <a href="http://oldgoodstrade.test/products/9">ipsam</a>
+            </div>
+          </div>
+          <div class="bottom">
+            <div class="sold_count">销量 <span>1751笔</span></div>
+            <div class="review_count">评价 <span>0</span></div>
+          </div>
+        </div>
+      </div>
+            <div class="col-xs-3 product-item">
+        <div class="product-content">
+          <div class="top">
+            <div class="img">
+              <a href="http://oldgoodstrade.test/products/10">
+                <img src="https://iocaffcdn.phphub.org/uploads/images/201806/01/5320/uYEHCJ1oRp.jpg" alt="">
+              </a>
+            </div>
+            <div class="price"><b>￥</b>2146.00</div>
+            <div class="title">
+                  <a href="http://oldgoodstrade.test/products/10">labore</a>
+            </div>
+          </div>
+          <div class="bottom">
+            <div class="sold_count">销量 <span>1712笔</span></div>
+            <div class="review_count">评价 <span>0</span></div>
+          </div>
+        </div>
+      </div>
+            <div class="col-xs-3 product-item">
+        <div class="product-content">
+          <div class="top">
+            <div class="img">
+              <a href="http://oldgoodstrade.test/products/11">
+                <img src="https://iocaffcdn.phphub.org/uploads/images/201806/01/5320/2JMRaFwRpo.jpg" alt="">
+              </a>
+            </div>
+            <div class="price"><b>￥</b>1430.00</div>
+            <div class="title">
+                  <a href="http://oldgoodstrade.test/products/11">aspernatur</a>
+            </div>
+          </div>
+          <div class="bottom">
+            <div class="sold_count">销量 <span>1228笔</span></div>
+            <div class="review_count">评价 <span>0</span></div>
+          </div>
+        </div>
+      </div>
+            <div class="col-xs-3 product-item">
+        <div class="product-content">
+          <div class="top">
+            <div class="img">
+              <a href="http://oldgoodstrade.test/products/12">
+                <img src="https://iocaffcdn.phphub.org/uploads/images/201806/01/5320/r3BNRe4zXG.jpg" alt="">
+              </a>
+            </div>
+            <div class="price"><b>￥</b>1196.00</div>
+            <div class="title">
+                  <a href="http://oldgoodstrade.test/products/12">officia</a>
+            </div>
+          </div>
+          <div class="bottom">
+            <div class="sold_count">销量 <span>856笔</span></div>
+            <div class="review_count">评价 <span>0</span></div>
+          </div>
+        </div>
+      </div>
+            <div class="col-xs-3 product-item">
+        <div class="product-content">
+          <div class="top">
+            <div class="img">
+              <a href="http://oldgoodstrade.test/products/13">
+                <img src="https://iocaffcdn.phphub.org/uploads/images/201806/01/5320/2JMRaFwRpo.jpg" alt="">
+              </a>
+            </div>
+            <div class="price"><b>￥</b>4713.00</div>
+            <div class="title">
+                  <a href="http://oldgoodstrade.test/products/13">dolorem</a>
+            </div>
+          </div>
+          <div class="bottom">
+            <div class="sold_count">销量 <span>1107笔</span></div>
+            <div class="review_count">评价 <span>0</span></div>
+          </div>
+        </div>
+      </div>
+            <div class="col-xs-3 product-item">
+        <div class="product-content">
+          <div class="top">
+            <div class="img">
+              <a href="http://oldgoodstrade.test/products/14">
+                <img src="https://iocaffcdn.phphub.org/uploads/images/201806/01/5320/C0bVuKB2nt.jpg" alt="">
+              </a>
+            </div>
+            <div class="price"><b>￥</b>4750.00</div>
+            <div class="title">
+                  <a href="http://oldgoodstrade.test/products/14">alias</a>
+            </div>
+          </div>
+          <div class="bottom">
+            <div class="sold_count">销量 <span>1752笔</span></div>
+            <div class="review_count">评价 <span>0</span></div>
+          </div>
+        </div>
+      </div>
+            <div class="col-xs-3 product-item">
+        <div class="product-content">
+          <div class="top">
+            <div class="img">
+              <a href="http://oldgoodstrade.test/products/15">
+                <img src="https://iocaffcdn.phphub.org/uploads/images/201806/01/5320/nIvBAQO5Pj.jpg" alt="">
+              </a>
+            </div>
+            <div class="price"><b>￥</b>3938.00</div>
+            <div class="title">
+                  <a href="http://oldgoodstrade.test/products/15">id</a>
+            </div>
+          </div>
+          <div class="bottom">
+            <div class="sold_count">销量 <span>59笔</span></div>
+            <div class="review_count">评价 <span>0</span></div>
+          </div>
+        </div>
+      </div>
+            <div class="col-xs-3 product-item">
+        <div class="product-content">
+          <div class="top">
+            <div class="img">
+              <a href="http://oldgoodstrade.test/products/16">
+                <img src="https://iocaffcdn.phphub.org/uploads/images/201806/01/5320/uYEHCJ1oRp.jpg" alt="">
+              </a>
+            </div>
+            <div class="price"><b>￥</b>1830.00</div>
+            <div class="title">
+                  <a href="http://oldgoodstrade.test/products/16">aliquid</a>
+            </div>
+          </div>
+          <div class="bottom">
+            <div class="sold_count">销量 <span>1303笔</span></div>
+            <div class="review_count">评价 <span>0</span></div>
+          </div>
+        </div>
+      </div>
+          </div>
+    <div class="pull-right"><ul class="pagination">
+        
+                    <li class="disabled"><span>&laquo;</span></li>
+        
+        
+                    
+            
+            
+                                                                        <li class="active"><span>1</span></li>
+                                                                                <li><a href="http://oldgoodstrade.test/products?search=&amp;order=&amp;page=2">2</a></li>
+                                                                                <li><a href="http://oldgoodstrade.test/products?search=&amp;order=&amp;page=3">3</a></li>
+                                                                                <li><a href="http://oldgoodstrade.test/products?search=&amp;order=&amp;page=4">4</a></li>
+                                                        
+        
+                    <li><a href="http://oldgoodstrade.test/products?search=&amp;order=&amp;page=2" rel="next">&raquo;</a></li>
+            </ul>
+</div>
+  </div>
+</div>
+</div>
+</div>
+        </div>
+        <footer class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6">
+          <p><span class="glyphicon glyphicon-envelope">给我们建议</p>
+          <p><span class="glyphicon glyphicon-pencil">Terms of use</p>
+        </div>
+        <div class="col-sm-6 text-right">
+          <p>由一辩必过组用<span class="glyphicon glyphicon-heart"></span>编码和设计</p>
+          <p>© 一辩必过 - All rights reserved</p>
+        </div>
+      </div>
+    </div>
+</footer>
+    </div>
+    <!-- JS 脚本 -->
+    <script src="/js/app.js?id=15bb7e40966865974b1d"></script>
+      <script>
+    var filters = {"search":"","order":""};
+    $(document).ready(function () {
+      $('.search-form input[name=search]').val(filters.search);
+      $('.search-form select[name=order]').val(filters.order);
+      $('.search-form select[name=order]').on('change', function() {
+        $('.search-form').submit();
+        });
+    })
+  </script>
+    <script>
+      $(document).ready(function() {
+        //排行榜移入移出
+        var $dropdownLi = $('li.dropdown');
+        $dropdownLi.mouseenter(function() {
+        $(this).addClass('open');
+      }).mouseleave(function() {
+        $(this).removeClass('open');
+      });
+    });
+    </script>
+</body>
+</html>

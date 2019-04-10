@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="gmRoduiYIBK6ZMopESJdWQo1FRldt1wWxTJf6PgO">
+    <title>Recycle - 二手物品交易系统</title>
+    <!-- 样式 -->
+    <link href="/css/app.css?id=4c2e9f03a0e67c857b93" rel="stylesheet">
+</head>
+<body>
+    <div id="app" class="register-page">
+        <nav class="navbar navbar-default navbar-static-top navbar-orange">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand navbar-font" href="http://oldgoodstrade.test">
+              <span class="glyphicon glyphicon-phone" aria-hidden="true"></span>
+                二手数码交易
+            </a>
+        </div>
+        <div class="collapse navbar-collapse" id="app-navbar-collapse">
+            <ul class="nav navbar-nav">
+              <li>
+                  <a href="#" class="navbar-font">网站特点</a>
+              </li>
+              <li>
+                  <a href="#" class="navbar-font">联系我们</a>
+              </li>
+              <li>
+                  <a href="#" class="navbar-font">FAQ</a>
+              </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a id="ranklist" href="#" class="dropdown-toggle navbar-font" data-toggle="dropdown" role="button" aria-expanded="false">排行榜</a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li>
+                            <a href="http://oldgoodstrade.test/rankingsale">销量排行</a>
+                        </li>
+                        <li>
+                            <a href="http://oldgoodstrade.test/rankingpoint">评分排行</a>
+                        </li>
+                    </ul>
+                </li>
+                <!-- 登录注册链接开始 -->
+                                    <li><a href="http://oldgoodstrade.test/login" class="navbar-font">登录</a></li>
+                    <li><a href="http://oldgoodstrade.test/register" class="navbar-font">注册</a></li>
+                                <!-- 登录注册链接结束 -->
+            </ul>
+        </div>
+    </div>
+</nav>
+        <div class="container">
+            <div class="container">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+                <div class="panel-heading">邮箱注册</div>
+
+                <div class="panel-body">
+                    <form class="form-horizontal" method="POST" action="http://oldgoodstrade.test/register">
+                        <input type="hidden" name="_token" value="gmRoduiYIBK6ZMopESJdWQo1FRldt1wWxTJf6PgO">
+
+                        <div class="form-group">
+                            <label for="name" class="col-md-4 control-label">昵称</label>
+
+                            <div class="col-md-6">
+                                <input id="name" type="text" class="form-control" name="name" value="" required autofocus>
+
+                                                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email" class="col-md-4 control-label">E-Mail</label>
+
+                            <div class="col-md-6">
+                                <input id="email" type="email" class="form-control" name="email" value="" required>
+
+                                                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="password" class="col-md-4 control-label">密码</label>
+
+                            <div class="col-md-6">
+                                <input id="password" type="password" class="form-control" name="password" required>
+
+                                                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="password-confirm" class="col-md-4 control-label">确认密码</label>
+
+                            <div class="col-md-6">
+                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group ">
+                            <label for="captcha" class="col-md-4 control-label">验证码</label>
+
+                            <div class="col-md-3">
+                                <input id="captcha" class="form-control" name="captcha" >
+
+                                <img class="thumbnail captcha" src="http://oldgoodstrade.test/captcha/flat?DKXiXXYN" onclick="this.src='/captcha/flat?'+Math.random()" title="点击图片重新获取验证码">
+
+                                                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-6 col-md-offset-4">
+                                <button type="submit" class="btn btn-primary">
+                                    注册
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+        </div>
+        <footer class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6">
+          <p><span class="glyphicon glyphicon-envelope">给我们建议</p>
+          <p><span class="glyphicon glyphicon-pencil">Terms of use</p>
+        </div>
+        <div class="col-sm-6 text-right">
+          <p>由一辩必过组用<span class="glyphicon glyphicon-heart"></span>编码和设计</p>
+          <p>© 一辩必过 - All rights reserved</p>
+        </div>
+      </div>
+    </div>
+</footer>
+    </div>
+    <!-- JS 脚本 -->
+    <script src="/js/app.js?id=15bb7e40966865974b1d"></script>
+        <script>
+      $(document).ready(function() {
+        //排行榜移入移出
+        var $dropdownLi = $('li.dropdown');
+        $dropdownLi.mouseenter(function() {
+        $(this).addClass('open');
+      }).mouseleave(function() {
+        $(this).removeClass('open');
+      });
+    });
+    </script>
+</body>
+</html>
