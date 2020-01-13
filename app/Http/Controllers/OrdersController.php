@@ -15,16 +15,27 @@ use App\Models\Order;
 use App\Services\OrderService;
 use Carbon\Carbon;
 use App\Exceptions\InvalidRequestException;
+use App\Exceptions\CouponCodeUnavailableException;
+use App\Models\CouponCode;
 
 class OrdersController extends Controller
-{   
+{
     //创建订单
     public function store(OrderRequest $request, OrderService $orderService)
     {
         $user    = $request->user();
         $address = UserAddress::find($request->input('address_id'));
+        $coupon  = null;
 
-        return $orderService->store($user, $address, $request->input('remark'), $request->input('items'));
+        // 如果用户提交了优惠码
+        if ($code = $request->input('coupon_code')) {
+            $coupon = CouponCode::where('code', $code)->first();
+            if (!$coupon) {
+                throw new CouponCodeUnavailableException('优惠券不存在');
+            }
+        }
+
+        return $orderService->store($user, $address, $request->input('remark'), $request->input('items'),$coupon);
     }
 
     //订单列表
@@ -32,7 +43,7 @@ class OrdersController extends Controller
     {
         $orders = Order::query()
             // 使用 with 方法预加载，避免N + 1问题
-            ->with(['items.product', 'items.productSku']) 
+            ->with(['items.product', 'items.productSku'])
             ->where('user_id', $request->user()->id)
             ->orderBy('created_at', 'desc')
             ->paginate();
@@ -42,7 +53,7 @@ class OrdersController extends Controller
 
     //订单详情页
     public function show(Order $order, Request $request)
-    {   
+    {
         $this->authorize('own', $order);
         return view('orders.show', ['order' => $order->load(['items.productSku', 'items.product'])]);
     }
@@ -105,7 +116,7 @@ class OrdersController extends Controller
             // 将订单标记为已评价
             $order->update(['reviewed' => true]);
             event(new OrderReviewed($order));
-        });    
+        });
 
         return redirect()->back();
     }
