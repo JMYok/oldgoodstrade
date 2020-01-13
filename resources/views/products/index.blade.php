@@ -70,7 +70,7 @@
           <div class="top">
             <div class="img">
               <a href="{{ route('products.show', ['product' => $product->id]) }}">
-                <img src="{{ $product->image_url }}" alt="">
+                <img src="{{ $product->image_url }}" alt="{{ $product->title }}">
               </a>
             </div>
             <div class="price"><b>￥</b>{{ $product->price }}</div>

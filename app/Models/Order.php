@@ -115,4 +115,10 @@ class Order extends Model
 
         return false;
     }
+
+    //关联优惠券
+    public function couponCode()
+    {
+        return $this->belongsTo(CouponCode::class);
+    }
 }

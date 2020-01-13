@@ -11,12 +11,12 @@
         <img class="cover" src="{{ $product->image_url }}" alt="">
       </div>
       <div class="col-sm-7">
-        <div class="title">{{ $product->long_title ?: $product->title }}</div>
+        <div class="title">{{ $product->title }}</div>
         <div class="price"><label>价格</label><em>￥</em><span>{{ $product->price }}</span></div>
         <div class="sales_and_reviews">
           <div class="sold_count">累计销量 <span class="count">{{ $product->sold_count }}</span></div>
           <div class="review_count">累计评价 <span class="count">{{ $product->review_count }}</span></div>
-          <div class="rating" title="评分 {{ $product->rating }}">评分 <span class="count">{{ str_repeat('★', floor($product->rating)) }}{{ str_repeat('☆', 5 - floor($product->rating)) }}</span></div>
+          <div class="rating" title="评分 {{ $product->rating }}">评分 <span class="count">{{ str_repeat('★', round($product->rating)) }}{{ str_repeat('☆', 5 - round($product->rating)) }}</span></div>
         </div>
         <div class="skus">
           <label>选择</label>
@@ -120,6 +120,7 @@
             location.reload();  //刷新页面按钮状态
           });
         }, function(error) { // 请求失败会执行这个回调
+          console.log(error);
           // 如果返回码是 401 代表没登录
           if (error.response && error.response.status === 401) {
             swal('请先登录', '', 'error');
@@ -157,12 +158,11 @@
         });
         }, function (error) { // 请求失败执行此回调
           if (error.response.status === 401) {
-
             // http 状态码为 401 代表用户未登陆
             swal('请先登录', '', 'error');
-
-          } else if (error.response.status === 422) {
-
+          } else if(error.response && error.response.data.msg){
+              swal(error.response.data.msg, '', 'error');
+          }else if (error.response.status === 422) {
             // http 状态码为 422 代表用户输入校验失败
             var html = '<div>';
             _.each(error.response.data.errors, function (errors) {
@@ -173,7 +173,6 @@
             html += '</div>';
             swal({content: $(html)[0], icon: 'error'})
           } else {
-
             // 其他情况应该是系统挂了
             swal('系统错误', '', 'error');
           }

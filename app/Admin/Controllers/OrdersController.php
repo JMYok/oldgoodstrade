@@ -87,7 +87,7 @@ class OrdersController extends Controller
                 throw new InternalException('未知订单支付方式：'.$order->payment_method);
                 break;
         }
-    }    
+    }
 
     /*发货*/
     public function ship(Order $order, Request $request)
@@ -113,7 +113,7 @@ class OrdersController extends Controller
             'ship_status' => Order::SHIP_STATUS_DELIVERED,
             // 我们在 Order 模型的 $casts 属性里指明了 ship_data 是一个数组
             // 因此这里可以直接把数组传过去
-            'ship_data'   => $data, 
+            'ship_data'   => $data,
         ]);
 
         // 返回上一页
@@ -137,7 +137,7 @@ class OrdersController extends Controller
         });
     }
 
-    
+
     public function edit($id, Content $content)
     {
         return $content

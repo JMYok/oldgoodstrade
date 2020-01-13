@@ -61,16 +61,6 @@ class ProductsController extends Controller
         }
 
         $products = $builder->paginate(16);
-        //将渲染好的blade存储为html
-        // File::put('../resources/views/html/index_guest.html',
-        //   view('products.index', [
-        //       'products' => $products,
-        //       'filters'  => [
-        //           'search' => $search,
-        //           'order'  => $order,
-        //       ],
-        //   ])->render()
-        // );
         return view('products.index', [
             'products' => $products,
             'filters'  => [
