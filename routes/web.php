@@ -66,12 +66,12 @@ Route::group(['middleware' => 'auth'], function() {
 
         /*退款*/
         Route::post('orders/{order}/apply_refund', 'OrdersController@applyRefund')->name('orders.apply_refund');
+
+        //优惠券
+        Route::get('coupon_codes/{code}', 'CouponCodesController@show')->name('coupon_codes.show');
     });
 });
 //支付成功服务器回调
 Route::post('payment/alipay/notify', 'PaymentController@alipayNotify')->name('payment.alipay.notify');
 //放在后方避免与收藏列表路由冲突
-Route::get('products/{product}', 'ProductsController@show')->name('products.show'); 
-
-
-
+Route::get('products/{product}', 'ProductsController@show')->name('products.show');
