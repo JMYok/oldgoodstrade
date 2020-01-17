@@ -1,6 +1,6 @@
 <?php
 
-use Illuminate\Http\Request;
+//use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 |
 */
 
+/*
 $api = app('Dingo\Api\Routing\Router');
 
 $api->version('v1', [
@@ -40,6 +41,4 @@ $api->version('v1', [
         ->name('api.authorizations.store');
         });
 });
-
-
-
+*/
