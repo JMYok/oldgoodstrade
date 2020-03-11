@@ -13,6 +13,9 @@
 
 Route::redirect('/', '/products')->name('root');
 
+Route::view('/test/home','pages/newpages/home');
+Route::view('/test/login','pages/newpages/login');
+
 /*商品主页*/
 Route::get('products', 'ProductsController@index')->name('products.index');
 
