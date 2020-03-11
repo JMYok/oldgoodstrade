@@ -33,6 +33,7 @@
     <link href="{{URL::asset('css/header/header1.css')}}" rel="stylesheet">
   	<link id="color_scheme" href="{{URL::asset('css/home4.css')}}" rel="stylesheet">
   	<link href="{{URL::asset('css/responsive.css')}}" rel="stylesheet">
+    <link id="color_scheme2" href="{{URL::asset('css/theme.css')}}" rel="stylesheet">
   	<link href="{{URL::asset('css/quickview/quickview.css')}}" rel="stylesheet">
   	<!-- Google web fonts
   		============================================ -->

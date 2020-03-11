@@ -1,5 +1,5 @@
 @extends('layouts.apptemplate')
-@section('title','地址簿')
+@section('title','我的购物车')
 
 @section('content')
 <body class="account-login account res layout-1">
@@ -668,98 +668,154 @@
 
 
       <!-- Main Container  -->
-    	<div class="main-container container">
-    		<ul class="breadcrumb">
-    			<li><a href="#"><i class="fa fa-home"></i></a></li>
-    			<li><a href="#">Address Book</a></li>
-    		</ul>
+<div class="container">
+  <ul class="breadcrumb">
+    <li><a href="index.html"><i class="fa fa-home"></i></a></li>
+    <li><a href="#">Shopping Cart</a></li>
+  </ul>
 
-    		<div class="row">
-    			<!--Middle Part Start-->
-    			<div id="content" class="col-md-9">
-    				<h2 class="title">Address Book</h2>
-    				<div class="table-responsive">
-    					<table class="table table-bordered table-hover">
-    						<thead>
-    							<tr>
-    								<td class="text-center">Image</td>
-    								<td class="text-left">Product Name</td>
-    								<td class="text-center">Order ID</td>
-    								<td class="text-center">Qty</td>
-    								<td class="text-center">Status</td>
-    								<td class="text-center">Date Added</td>
-    								<td class="text-right">Total</td>
-    								<td></td>
-    							</tr>
-    						</thead>
-    						<tbody>
-    							<tr>
-    								<td class="text-center">
-    									<a href="product.html"><img width="85" class="img-thumbnail" title="Aspire Ultrabook Laptop" alt="Aspire Ultrabook Laptop" src="image/catalog/demo/product/fashion/1.jpg">
-    									</a>
-    								</td>
-    								<td class="text-left"><a href="product.html">Aspire Ultrabook Laptop</a>
-    								</td>
-    								<td class="text-center">#214521</td>
-    								<td class="text-center">1</td>
-    								<td class="text-center">Shipped</td>
-    								<td class="text-center">21/06/2016</td>
-    								<td class="text-right">$228.00</td>
-    								<td class="text-center"><a class="btn btn-info" title="" data-toggle="tooltip" href="order-information.html" data-original-title="View"><i class="fa fa-eye"></i></a>
-    								</td>
-    							</tr>
-    							<tr>
-    								<td class="text-center">
-    									<a href="product.html"><img  width="85" class="img-thumbnail" title="Xitefun Causal Wear Fancy Shoes" alt="Xitefun Causal Wear Fancy Shoes" src="image/catalog/demo/product/fashion/4.jpg">
-    									</a>
-    								</td>
-    								<td class="text-left"><a href="product.html">Xitefun Causal Wear Fancy Shoes</a>
-    								</td>
-    								<td class="text-center">#1565245</td>
-    								<td class="text-center">1</td>
-    								<td class="text-center">Shipped</td>
-    								<td class="text-center">20/06/2016</td>
-    								<td class="text-right">$133.20</td>
-    								<td class="text-center"><a class="btn btn-info" title="" data-toggle="tooltip" href="order-information.html" data-original-title="View"><i class="fa fa-eye"></i></a>
-    								</td>
-    							</tr>
-    						</tbody>
-    					</table>
-    				</div>
+  <div class="row">
+    <div id="content" class="col-sm-12">
+      <h1>Shopping Cart&nbsp;(0.00kg)
+      </h1>
+      <div class="table-responsive">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <td class="text-center">Image</td>
+              <td class="text-left">Product Name</td>
+              <td class="text-left">Model</td>
+              <td class="text-left">Quantity</td>
+              <td class="text-right">Unit Price</td>
+              <td class="text-right">Total</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="text-center"> <a href="product.html"><img src="image/catalog/demo/product/travel/10-80x80.jpg" alt="Bougainvilleas on Lombard Street,  San Francisco, Tokyo" title="Bougainvilleas on Lombard Street,  San Francisco, Tokyo" class="img-thumbnail""></a> </td>
+              <td class="text-left"><a href="#">Bougainvilleas on Lombard Street,  San Francisco, Tokyo</a>                                  <br>
+                <small>Size: M</small>                                                 </td>
+              <td class="text-left">Product 8</td>
+              <td class="text-left"><div class="input-group btn-block" style="max-width: 200px;">
+                <input type="text" name="quantity[315]" value="1" size="1" class="form-control">
+                <span class="input-group-btn">
+                <button type="submit" data-toggle="tooltip" title="" class="btn btn-primary" data-original-titl
+                ="Update"><i class="fa fa-refresh"></i></button>
+                <button type="button" data-toggle="tooltip" title="" class="btn btn-danger" onclick="cart.remove('315');" data-original-title="Remove"><i class="fa fa-times-circle"></i></button>
+                </span></div></td>
+              <td class="text-right">$120.80</td>
+              <td class="text-right">$120.80</td>
+            </tr>
+            <tr>
+              <td class="text-center"> <a href="product.html"><img src="image/catalog/demo/product/travel/2-80x80.jpg" alt="Canada Travel One or Two European Facials at  Studio" title="Canada Travel One or Two European Facials at  Studio" class="img-thumbnail""></a> </td>
+              <td class="text-left"><a href="#">Canada Travel One or Two European Facials at  Studio</a><br>
+                <small>Size: M</small>
+              </td>
+              <td class="text-left">Product 8</td>
+              <td class="text-left"><div class="input-group btn-block" style="max-width: 200px;">
+                <input type="text" name="quantity[315]" value="2" size="1" class="form-control">
+                <span class="input-group-btn">
+                <button type="submit" data-toggle="tooltip" title="" class="btn btn-primary" data-original-titl
+                ="Update"><i class="fa fa-refresh"></i></button>
+                <button type="button" data-toggle="tooltip" title="" class="btn btn-danger" onclick="cart.remove('315');" data-original-title="Remove"><i class="fa fa-times-circle"></i></button>
+                </span></div></td>
+              <td class="text-right">$86.00</td>
+              <td class="text-right">$172.00</td>
+            </tr>
+            <tr>
+              <td class="text-center"> <a href="product.html"><img src="image/catalog/demo/product/fashion/2-80x80.jpg" alt="Girly Summer Outfit Ideas To Upgrade Your Wardrobe" title="Girly Summer Outfit Ideas To Upgrade Your Wardrobe" class="img-thumbnail"></a> </td>
+              <td class="text-left"><a href="#">Girly Summer Outfit Ideas To Upgrade Your Wardrobe</a><br>
+                <small>Size: L</small>
+              </td>
+              <td class="text-left">Product 5</td>
+              <td class="text-left"><div class="input-group btn-block" style="max-width: 200px;">
+                <input type="text" name="quantity[315]" value="1" size="1" class="form-control">
+                <span class="input-group-btn">
+                <button type="submit" data-toggle="tooltip" title="" class="btn btn-primary" data-original-titl
+                ="Update"><i class="fa fa-refresh"></i></button>
+                <button type="button" data-toggle="tooltip" title="" class="btn btn-danger" onclick="cart.remove('315');" data-original-title="Remove"><i class="fa fa-times-circle"></i></button>
+                </span></div></td>
+              <td class="text-right">$128.00</td>
+              <td class="text-right">$128.00</td>
+            </tr>
+          </tbody>
 
-    			</div>
-    			<!--Middle Part End-->
-    			<!--Right Part Start -->
-    			<aside class="col-md-3 col-sm-4 col-xs-12 content-aside right_column sidebar-offcanvas">
-                   <span id="close-sidebar" class="fa fa-times"></span>
-                    <div class="module">
-                        <h3 class="modtitle"><span>Account </span></h3>
-                        <div class="module-content custom-border">
-                          <ul class="list-box">
+        </table>
+      </div>
+      <h2>What would you like to do next?</h2>
+      <p>Choose if you have a discount code or reward points you want to use or would like to estimate your delivery cost.</p>
+      <div class="panel-group" id="accordion">         <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title"><a href="#collapse-coupon" class="accordion-toggle" data-toggle="collapse" data-parent="#accordion">Use Coupon Code <i class="fa fa-caret-down"></i></a></h4>
+        </div>
+        <div id="collapse-coupon" class="panel-collapse collapse">
+          <div class="panel-body">
+            <label class="col-sm-2 control-label" for="input-coupon">Enter your coupon here</label>
+            <div class="input-group">
+              <input type="text" name="coupon" value="" placeholder="Enter your coupon here" id="input-coupon" class="form-control">
+              <span class="input-group-btn">
+                <input type="button" value="Apply Coupon" id="button-coupon" data-loading-text="Loading..." class="btn btn-primary">
+              </span>
+            </div>
+          </div>
+        </div>
+        </div>
 
-                            <li><a href="login.html">Login </a> / <a href="register.html">Register </a></li>
-                            <li><a href="#">Forgotten Password </a></li>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title"><a href="#collapse-voucher" data-toggle="collapse" data-parent="#accordion" class="accordion-toggle">Use Gift Certificate <i class="fa fa-caret-down"></i></a></h4>
+          </div>
+          <div id="collapse-voucher" class="panel-collapse collapse">
+            <div class="panel-body">
+              <label class="col-sm-2 control-label" for="input-voucher">Enter your gift certificate code here</label>
+              <div class="input-group">
+                <input type="text" name="voucher" value="" placeholder="Enter your gift certificate code here" id="input-voucher" class="form-control">
+                <span class="input-group-btn">
+                  <input type="submit" value="Apply Gift Certificate" id="button-voucher" data-loading-text="Loading..." class="btn btn-primary">
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
-                            <li><a href="#">My Account </a></li>
+      <div class="row">
+        <div class="col-sm-4 col-sm-offset-8">
+          <table class="table table-bordered">
+            <tbody>
+              <tr>
+                <td class="text-right"><strong>Sub-Total:</strong></td>
+                <td class="text-right">$99.00</td>
+              </tr>
+              <tr>
+                <td class="text-right"><strong>Eco Tax (-2.00):</strong></td>
+                <td class="text-right">$2.00</td>
+              </tr>
+              <tr>
+                <td class="text-right"><strong>VAT (20%):</strong></td>
+                <td class="text-right">$19.80</td>
+              </tr>
+              <tr>
+                <td class="text-right"><strong>Total:</strong></td>
+                <td class="text-right">$120.80</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
 
-                            <li><a href="#">Address Book </a></li>
-                            <li><a href="wishlist.html">Wish List </a></li>
-                            <li><a href="#">Order History </a></li>
-                            <li><a href="#">Downloads </a></li>
-                            <li><a href="#">Recurring payments </a></li>
-                            <li><a href="#">Reward Points </a></li>
-                            <li><a href="#">Returns </a></li>
-                            <li><a href="#">Transactions </a></li>
-                            <li><a href="#">Newsletter </a></li>
+      <div class="buttons clearfix">
+        <div class="pull-left"><a href="index.html" class="btn btn-default">Continue Shopping</a></div>
+        <div class="pull-right"><a href="checkout.html" class="btn btn-primary">Checkout</a></div>
+      </div>
+    </div>
 
-                          </ul>
-                        </div>
-                      </div>
-                </aside>
-    			<!--Right Part End -->
-    		</div>
-    	</div>
-    	<!-- //Main Container -->
+
+  </div>
+
+</div>
+<!-- //Main Container -->
+
 
 
     </div>
