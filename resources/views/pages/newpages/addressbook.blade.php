@@ -1,5 +1,5 @@
 @extends('layouts.apptemplate')
-@section('title','登录')
+@extends('title','地址簿')
 
 @section('content')
 <body class="account-login account res layout-1">
@@ -667,86 +667,99 @@
       <!-- //Header Container  -->
 
 
-	<!-- Main Container  -->
-		<div class="container">
-  		<div class="row">
-        <ul class="breadcrumb">
-          <li><a href="#"><i class="fa fa-home"></i></a></li>
-          <li><a href="#">Account</a></li>
-          <li><a href="#">Login</a></li>
-        </ul>
-  			<div id="content" class="col-md-9">
-  				<div class="row">
-          <div class="col-sm-6">
-            <div class="well ">
-              <h2>New Customer</h2>
-              <p><strong>Register Account</strong></p>
-              <p>By creating an account you will be able to shop faster, be up to date on an order's status, and keep track of the orders you have previously made.</p>
-              <a href="register.html" class="btn btn-primary">Continue</a></div>
-          </div>
-          <div class="col-sm-6">
+      <!-- Main Container  -->
+    	<div class="main-container container">
+    		<ul class="breadcrumb">
+    			<li><a href="#"><i class="fa fa-home"></i></a></li>
+    			<li><a href="#">Address Book</a></li>
+    		</ul>
 
-                  <div class="well col-sm-12">
+    		<div class="row">
+    			<!--Middle Part Start-->
+    			<div id="content" class="col-md-9">
+    				<h2 class="title">Address Book</h2>
+    				<div class="table-responsive">
+    					<table class="table table-bordered table-hover">
+    						<thead>
+    							<tr>
+    								<td class="text-center">Image</td>
+    								<td class="text-left">Product Name</td>
+    								<td class="text-center">Order ID</td>
+    								<td class="text-center">Qty</td>
+    								<td class="text-center">Status</td>
+    								<td class="text-center">Date Added</td>
+    								<td class="text-right">Total</td>
+    								<td></td>
+    							</tr>
+    						</thead>
+    						<tbody>
+    							<tr>
+    								<td class="text-center">
+    									<a href="product.html"><img width="85" class="img-thumbnail" title="Aspire Ultrabook Laptop" alt="Aspire Ultrabook Laptop" src="image/catalog/demo/product/fashion/1.jpg">
+    									</a>
+    								</td>
+    								<td class="text-left"><a href="product.html">Aspire Ultrabook Laptop</a>
+    								</td>
+    								<td class="text-center">#214521</td>
+    								<td class="text-center">1</td>
+    								<td class="text-center">Shipped</td>
+    								<td class="text-center">21/06/2016</td>
+    								<td class="text-right">$228.00</td>
+    								<td class="text-center"><a class="btn btn-info" title="" data-toggle="tooltip" href="order-information.html" data-original-title="View"><i class="fa fa-eye"></i></a>
+    								</td>
+    							</tr>
+    							<tr>
+    								<td class="text-center">
+    									<a href="product.html"><img  width="85" class="img-thumbnail" title="Xitefun Causal Wear Fancy Shoes" alt="Xitefun Causal Wear Fancy Shoes" src="image/catalog/demo/product/fashion/4.jpg">
+    									</a>
+    								</td>
+    								<td class="text-left"><a href="product.html">Xitefun Causal Wear Fancy Shoes</a>
+    								</td>
+    								<td class="text-center">#1565245</td>
+    								<td class="text-center">1</td>
+    								<td class="text-center">Shipped</td>
+    								<td class="text-center">20/06/2016</td>
+    								<td class="text-right">$133.20</td>
+    								<td class="text-center"><a class="btn btn-info" title="" data-toggle="tooltip" href="order-information.html" data-original-title="View"><i class="fa fa-eye"></i></a>
+    								</td>
+    							</tr>
+    						</tbody>
+    					</table>
+    				</div>
 
-              <h2>Returning Customer</h2>
-              <p><strong>I am a returning customer</strong></p>
-              <form action="#" method="post" enctype="multipart/form-data">
-                <div class="form-group">
-                  <label class="control-label" for="input-email">E-Mail Address</label>
-                  <input type="text" name="email" value="" placeholder="E-Mail Address" id="input-email" class="form-control">
-                </div>
-                <div class="form-group">
-                  <label class="control-label" for="input-password">Password</label>
-                  <input type="password" name="password" value="" placeholder="Password" id="input-password" class="form-control">
-                  <a href="#">Forgotten Password</a></div>
+    			</div>
+    			<!--Middle Part End-->
+    			<!--Right Part Start -->
+    			<aside class="col-md-3 col-sm-4 col-xs-12 content-aside right_column sidebar-offcanvas">
+                   <span id="close-sidebar" class="fa fa-times"></span>
+                    <div class="module">
+                        <h3 class="modtitle"><span>Account </span></h3>
+                        <div class="module-content custom-border">
+                          <ul class="list-box">
 
-                  <input type="submit" value="Login" class="btn btn-primary pull-left">
-              </form>
-              <column id="column-login" class="col-sm-8 pull-right">
-                <div class="row">
-                    <div class="social_login pull-right" id="so_sociallogin">
-                      <a href="#" class="btn btn-social-icon btn-sm btn-facebook"><i class="fa fa-facebook fa-fw" aria-hidden="true"></i></a>
-                      <a href="#" class="btn btn-social-icon btn-sm btn-twitter"><i class="fa fa-twitter fa-fw" aria-hidden="true"></i></a>
-                      <a href="#" class="btn btn-social-icon btn-sm btn-google-plus"><i class="fa fa-google fa-fw" aria-hidden="true"></i></a>
-                      <a href="#" class="btn btn-social-icon btn-sm btn-linkdin"><i class="fa fa-linkedin fa-fw" aria-hidden="true"></i></a>
-                    </div>
-                </div>
-              </column>
-            </div>
-          </div>
-        </div>
-  			</div>
-  		 <aside class="col-md-3 col-sm-4 col-xs-12 content-aside right_column sidebar-offcanvas">
-      <span id="close-sidebar" class="fa fa-times"></span>
-      <div class="module">
-          <h3 class="modtitle"><span>My Wish List </span></h3>
-          <div class="module-content custom-border">
-              <ul class="list-box">
+                            <li><a href="login.html">Login </a> / <a href="register.html">Register </a></li>
+                            <li><a href="#">Forgotten Password </a></li>
 
-                  <li><a href="#">My Account </a></li>
+                            <li><a href="#">My Account </a></li>
 
-                  <li><a href="#">Edit Account </a></li>
-                  <li><a href="#">Password </a></li>
+                            <li><a href="#">Address Book </a></li>
+                            <li><a href="wishlist.html">Wish List </a></li>
+                            <li><a href="#">Order History </a></li>
+                            <li><a href="#">Downloads </a></li>
+                            <li><a href="#">Recurring payments </a></li>
+                            <li><a href="#">Reward Points </a></li>
+                            <li><a href="#">Returns </a></li>
+                            <li><a href="#">Transactions </a></li>
+                            <li><a href="#">Newsletter </a></li>
 
-                  <li><a href="#">Address Book </a></li>
-                  <li><a href="wishlist.html">Wish List </a></li>
-                  <li><a href="#">Order History </a></li>
-                  <li><a href="#">Downloads </a></li>
-                  <li><a href="#">Recurring payments </a></li>
-                  <li><a href="#">Reward Points </a></li>
-                  <li><a href="#">Returns </a></li>
-                  <li><a href="#">Transactions </a></li>
-                  <li><a href="#">Newsletter </a></li>
-
-                  <li><a href="#">Logout </a></li>
-
-              </ul>
-          </div>
-      </div>
-    </aside>
-      </div>
-    </div>
-	<!-- //Main Container -->
+                          </ul>
+                        </div>
+                      </div>
+                </aside>
+    			<!--Right Part End -->
+    		</div>
+    	</div>
+    	<!-- //Main Container -->
 
 
     </div>

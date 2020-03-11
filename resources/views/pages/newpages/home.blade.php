@@ -1,7 +1,7 @@
 @extends('layouts.apptemplate')
 @section('title', '商品主页')
 
-	@section('content')
+@section('content')
 	<body class="common-home res layout-4">
 	<div id="wrapper" class="wrapper-fluid banners-effect-3">
 		<!-- Header Container  -->
