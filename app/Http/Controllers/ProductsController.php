@@ -22,6 +22,8 @@ class ProductsController extends Controller
         // search 参数用来模糊搜索商品
         if ($search = $request->input('search', '')) {
             $like = '%'.$search.'%';
+
+
             // 模糊搜索商品标题、商品详情、SKU 标题、SKU描述
             $builder->where(function ($query) use ($like) {
                 $query->where('title', 'like', $like)
@@ -60,7 +62,7 @@ class ProductsController extends Controller
             }
         }
 
-        $products = $builder->paginate(16);
+        $products = $builder->paginate(10);
         return view('products.index', [
             'products' => $products,
             'filters'  => [

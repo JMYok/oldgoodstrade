@@ -6,7 +6,6 @@
     "type": "project",
     "require": {
         "php": ">=7.0.0",
-        "dingo/api": "^2.0.0-alpha2",
         "encore/laravel-admin": "1.5.*",
         "fideloper/proxy": "~3.3",
         "laravel/framework": "5.5.*",

@@ -38,7 +38,7 @@ class User extends Authenticatable implements JWTSubject
     public function addresses()
     {
         return $this->hasMany(UserAddress::class);
-    }  
+    }
 
     /*与商品的关联*/
     public function favoriteProducts()
@@ -52,16 +52,6 @@ class User extends Authenticatable implements JWTSubject
     public function cartItems()
     {
         return $this->hasMany(CartItem::class);
-    }
-
-    public function getJWTIdentifier()
-    {
-        return $this->getKey();
-    }
-
-    public function getJWTCustomClaims()
-    {
-        return [];
     }
 
 
