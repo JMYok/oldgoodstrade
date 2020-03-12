@@ -22,6 +22,7 @@
             <ul class="nav navbar-nav navbar-right">
                 <!-- 顶部类目菜单开始 -->
                 <!-- 判断模板是否有 $categoryTree 变量 -->
+                <!-- 类目树 -->
                 @if(isset($categoryTree))
                   <li class="dropdown">
                     <a href="#" class="nav-link dropdown-toggle navbar-font" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="categoryTree">所有类目 <b class="caret"></b></a>
