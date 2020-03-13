@@ -170,8 +170,6 @@ return [
          * Package Service Providers...
          */
 
-        //Laravel\Socialite\SocialiteServiceProvider::class,
-        SocialiteProviders\Manager\ServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -181,7 +179,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         App\Providers\EasySmsServiceProvider::class,
-        
+
 
     ],
 
@@ -231,7 +229,6 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-        'Socialite' => Laravel\Socialite\Facades\Socialite::class,
     ],
     //订单失效时间
     'order_ttl' => 1800,

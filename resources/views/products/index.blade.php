@@ -15,7 +15,7 @@
        <a class="all-products" href="{{ route('products.index') }}">全部</a> &gt;
        <!-- 如果当前是通过类目筛选的 -->
        @if ($category)
-         <!-- 遍历这个类目的所有祖先类目，我们在模型的访问器中已经排好序，因此可以直接使用 -->
+         <!-- 遍历这个类目的所有祖先类目，在模型的访问器中已经排好序，因此可以直接使用 -->
          @foreach($category->ancestors as $ancestor)
            <!-- 添加一个名为该祖先类目名的链接 -->
            <span class="category">
@@ -99,6 +99,7 @@
     $(document).ready(function () {
       $('.search-form input[name=search]').val(filters.search);
       $('.search-form select[name=order]').val(filters.order);
+      //只要状态改变，就提交表单
       $('.search-form select[name=order]').on('change', function() {
         $('.search-form').submit();
         });

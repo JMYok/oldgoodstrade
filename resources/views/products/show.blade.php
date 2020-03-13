@@ -120,7 +120,7 @@
             location.reload();  //刷新页面按钮状态
           });
         }, function(error) { // 请求失败会执行这个回调
-          console.log(error);
+          // console.log(error);
           // 如果返回码是 401 代表没登录
           if (error.response && error.response.status === 401) {
             swal('请先登录', '', 'error');

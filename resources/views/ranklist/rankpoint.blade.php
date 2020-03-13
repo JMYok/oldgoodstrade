@@ -6,10 +6,10 @@
     <div class="row">
 		<div class="well">
       <h1 class="text-center">Rating Top 10</h1>
-      <div class="list-group">
+      <div class="list-group" style="width:90% !important; margin:auto !important;">
       @foreach($pointranks as $product)
         <a class="list-group-item" href="{{route('products.show',['product' => $product->id])}}">
-               <div class="media col-md-3">
+               <div class="col-md-3">
                    <figure class="pull-left">
                        <img class="media-object img-rounded img-responsive" src="{{ $product->image_url }}" alt="" >
                    </figure>
@@ -28,6 +28,6 @@
         @endforeach
         </div>
     </div>
-</div>
+    </div>
 </div>
 @stop
