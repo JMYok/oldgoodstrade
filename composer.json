@@ -6,7 +6,7 @@
     "type": "project",
     "require": {
         "php": ">=7.0.0",
-        "dingo/api": "^2.0.0-alpha2",
+        "fzaninotto/faker": "~1.4",
         "encore/laravel-admin": "1.5.*",
         "fideloper/proxy": "~3.3",
         "laravel/framework": "5.5.*",
@@ -16,8 +16,6 @@
         "overtrue/easy-sms": "^1.1",
         "overtrue/laravel-lang": "^3.0",
         "predis/predis": "^1.1",
-        "socialiteproviders/weixin": "^4.0",
-        "tymon/jwt-auth": "1.0.0-rc.2",
         "yansongda/pay": "^2.6"
     },
     "require-dev": {

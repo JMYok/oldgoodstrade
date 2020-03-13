@@ -12,7 +12,7 @@ class ProductsSeeder extends Seeder
     public function run()
     {
         // 创建 50 个商品
-        $products = factory(\App\Models\Product::class, 10)->create();
+        $products = factory(\App\Models\Product::class, 50)->create();
         foreach ($products as $product) {
             // 创建 3 个 SKU，并且每个 SKU 的 `product_id` 字段都设为当前循环的商品 id
             $skus = factory(\App\Models\ProductSku::class, 3)->create(['product_id' => $product->id]);

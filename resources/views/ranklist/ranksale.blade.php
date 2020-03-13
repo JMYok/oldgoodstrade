@@ -6,7 +6,7 @@
     <div class="row">
 		<div class="well">
       <h1 class="text-center">Sales Top 10</h1>
-      <div class="list-group">
+      <div class="list-group" style="width:90% !important; margin:auto !important;">
       @foreach($saleranks as $product)
         <a class="list-group-item" href="{{route('products.show',['product' => $product->id])}}">
                <div class="media col-md-3">
