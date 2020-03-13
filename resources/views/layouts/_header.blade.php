@@ -3,7 +3,7 @@
         <div class="navbar-header">
             <a class="navbar-brand navbar-font" href="{{ url('/') }}">
               <span class="glyphicon glyphicon-phone" aria-hidden="true"></span>
-                二手数码交易
+                旧物交易
             </a>
         </div>
         <div class="collapse navbar-collapse" id="app-navbar-collapse">
