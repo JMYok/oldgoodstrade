@@ -10,7 +10,7 @@
   	<!-- Favicon
   		============================================ -->
   	<link rel="shortcut icon" type="image/png" href="ico/favicon-16x16.png"/>
-  	<!-- Libs CSS
+  	<!-- Libs CSS JS
   		============================================ -->
   	<link rel="stylesheet" href="http://cdn.bootstrapmb.com/bootstrap/3.3.5/css/bootstrap.min.css">
   	<link href="{{URL::asset('css/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">

@@ -16,7 +16,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         // 当 Laravel 渲染 products.index 和 products.show 模板时，就会使用 CategoryTreeComposer 这个来注入类目树变量
-        \View::composer(['products.index', 'products.show'], \App\Http\ViewComposers\CategoryTreeComposer::class);
+        \View::composer(['products.index', 'products.show','pages.newpages.home'], \App\Http\ViewComposers\CategoryTreeComposer::class);
     }
 
     /**
@@ -30,7 +30,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->singleton('alipay', function () {
             $config = config('pay.alipay');
             //服务器回调地址
-            $config['notify_url'] = 'http://requestbin.net/r/1a80ktt1';
+            $config['notify_url'] = 'http://requestbin.net/r/193gz1j1';
             //前端回调地址
             $config['return_url'] = route('payment.alipay.return');
             // 判断当前项目运行环境是否为线上环境
