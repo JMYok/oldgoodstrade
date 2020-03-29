@@ -16,7 +16,10 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         // 当 Laravel 渲染 products.index 和 products.show 模板时，就会使用 CategoryTreeComposer 这个来注入类目树变量
-        \View::composer(['products.index', 'products.show','pages.newpages.home'], \App\Http\ViewComposers\CategoryTreeComposer::class);
+        \View::composer(['products.index', 'products.show','products.home'], \App\Http\ViewComposers\CategoryTreeComposer::class);
+
+        //注入RankList
+        \View::composer(['products.home'], \App\Http\ViewComposers\RankListComposer::class);
     }
 
     /**

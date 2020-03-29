@@ -162,7 +162,7 @@ ul.megamenu .title-submenu{
     font-size: 16px;
 	color: #23a1d1;
 	width: 100%;
-    float: left;	
+    float: left;
 	padding-left: 14px;
     padding-bottom: 10px;
 }
@@ -681,7 +681,7 @@ ul.megamenu > li span.labelhot {
     }
 
     .responsive ul.megamenu > li.click:before,
-    .responsive ul.megamenu > li.hover:before {
+    /* .responsive ul.megamenu > li.hover:before {
         content: "\f067";
         font-family: FontAwesome;
         color: #51cfc6;
@@ -692,7 +692,7 @@ ul.megamenu > li span.labelhot {
         top: 0;
         z-index: 10;
         padding: 13px 17px 10px 50px;
-    }
+    } */
 
     .responsive ul.megamenu > li.active .close-menu {
         display: block;
@@ -803,7 +803,7 @@ ul.megamenu > li span.labelhot {
 	max-height: 100%;
 	 border: 1px solid #e6e6e6;
 	}
-	
+
 	.vertical-wrapper {
     position: fixed;
     top: 0px;
@@ -823,7 +823,7 @@ ul.megamenu > li span.labelhot {
 	max-height: 100%;
 	 border: 1px solid #e6e6e6;
 	}
-	
+
 	.vertical  #menuHeading{
 		display:none;
 	}
@@ -834,7 +834,7 @@ ul.megamenu > li span.labelhot {
     -webkit-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
   }
-  
+
    #remove-megamenu {
     padding: 10px;
     z-index: 10;
@@ -842,17 +842,17 @@ ul.megamenu > li span.labelhot {
     display: none;
     text-align: right;
   }
-  
+
   .so-megamenu-active #remove-megamenu {
     display: block;
   }
-  
+
     .so-vertical-active {
     visibility: visible;
     -webkit-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
   }
-  
+
    #remove-verticalmenu {
     padding: 10px;
     z-index: 10;
@@ -860,7 +860,7 @@ ul.megamenu > li span.labelhot {
     display: none;
     text-align: right;
   }
-  
+
   .so-vertical-active #remove-verticalmenu {
     display: block;
   }

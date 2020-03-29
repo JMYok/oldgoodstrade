@@ -293,7 +293,7 @@
 	max-width: 100%;
 	padding: 0;
 	position: relative;
-	background: url(../images/477.gif) no-repeat scroll center center transparent;
+	background: url(../../images/477.gif) no-repeat scroll center center transparent;
 	min-height: 300px;
 	display: block;
 	z-index: 0;
@@ -729,7 +729,7 @@
 .so-listing-tabs .new-ltabs-item {
 	opacity:0!important;
 	filter: alpha(opacity=0)!important;
-} 
+}
 
 /* .so-listing-tabs .ltabs-items .ltabs-items-inner.play .ltabs-item{
 	opacity:1;
@@ -812,4 +812,3 @@
 	-ms-transform: translateX(200%);
 	transition: all 0.3s ease-in-out;
 }
-

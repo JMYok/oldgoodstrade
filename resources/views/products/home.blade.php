@@ -2,6 +2,13 @@
 @section('title', '商品主页')
 
 @section('content')
+<style>
+ span.count{
+			color: #ff5e00;
+			font-size: 18px;
+ }
+</style>
+
 	<body class="common-home res layout-4">
 	<div id="wrapper" class="wrapper-fluid banners-effect-3">
 		<!-- Header Container  -->
@@ -27,7 +34,16 @@
 												<li><a href="{{route('user_addresses.index')}}">收获地址</a></li>
 												<li><a href="{{ route('orders.index') }}">我的订单</a></li>
 												<li><a href="{{ route('products.favorites') }}">我的收藏</a></li>
-												<li><a href="{{ route('logout') }}"><span>退出登录</span></a></li>
+												<li>
+														<a href="{{ route('logout') }}"
+																onclick="event.preventDefault();
+																				 document.getElementById('logout-form').submit();">
+																退出登录
+														</a>
+														<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+																{{ csrf_field() }}
+														</form>
+												</li>
 											</ul>
 										</li>
 										</ul>
@@ -231,24 +247,11 @@
 
 		<!-- Main Container  -->
 		<div id="content">
-		<div class="custom-scoll hidden-sm hidden-md hidden-xs">
-			<div class="custom-html">
-			<div class="scoll-cate list_diemneo">
-				<ul id="nav-scroll">
-				<li class="neo1"><a href="#box-link1"><span>Hot deal</span></a></li>
-				<li class="neo2"><a href="#box-link2"><span>Spa</span></a></li>
-				<li class="neo3"><a href="#box-link3"><span>Fashion</span></a></li>
-				<li class="neo4"><a href="#box-link4"><span>Travel</span></a></li>
-				<li class="neo5"><a href="#box-link5"><span>Digital</span></a></li>
-				</ul>
-			</div>
-			</div>
-		</div>
 		<div class="so-page-builder">
 			<section id="section-style-h4-1" class="section-style-h4">
 				<div class="container-fluid page-builder-ltr">
 				<div class="row row_a90w  row-style ">
-					<!--- SLider right-->
+					<!--- 轮播----->
 					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col_dg1b slider-right">
 					<div class="module sohomepage-slider so-homeslider-ltr  ">
 						<div class="modcontent">
@@ -291,6 +294,7 @@
 				</div>
 			</section>
 			<div class="container page-builder-ltr">
+				<!-- 静态页面 -->
 			<div class="row row_k43m row-style ">
 				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col_hmsd block block_2">
 					<div class="home4-banner-1 row clearfix ">
@@ -329,8 +333,8 @@
 								<span class="ltabs-tab-arrow">▼</span>
 								<div class="item-sub-cat">
 								<ul class="ltabs-tabs cf font-ct list-sub-cat">
-									<li class="ltabs-tab tab-sel" data-category-id="1" data-active-content=".items-category-1"> <span class="ltabs-tab-label">销量最高</span> </li>
-									<li class="ltabs-tab " data-category-id="4" data-active-content=".items-category-4"> <span class="ltabs-tab-label">评分最高</span> </li>
+									<li class="ltabs-tab tab-sel" data-category-id="1" data-active-content=".items-category-1"> <span class="ltabs-tab-label">销量Top10</span> </li>
+									<li class="ltabs-tab " data-category-id="4" data-active-content=".items-category-4"> <span class="ltabs-tab-label">评分Top10</span> </li>
 								</ul>
 								</div>
 							</div>
@@ -340,8 +344,9 @@
 							<div class="wap-listing-tabs  products-list grid">
 							<div class="ltabs-items-container">
 							<!--Begin Items-->
-							<div class="ltabs-items ltabs-items-selected ltabs-items-loaded items-category-1" data-total="6">
+							<div class="ltabs-items ltabs-items-selected ltabs-items-loaded items-category-1" data-total="10">
 								<div class="ltabs-items-inner ltabs-slider">
+								@foreach($saleranks as $product)
 								<div class="ltabs-item ">
 										<div class="item-inner product-thumb transition product-layout">
 											<div class="product-item-container">
@@ -349,38 +354,37 @@
 													<div class="image product-image-container ">
 														<a class="lt-image"
 															href="product.html" target="_self"
-															title="Bazem Carlo again is there anyone who loves oreos ">
-														<img src="{{URL::asset('images/catalog/demo/banners/home4/banner4-3.jpg')}}" alt="Bazem Carlo again is there anyone who loves oreos ">
+															title="{{$product->title}}">
+														<img src="{{ $product->image_url }}" alt="{{$product->title}}">
 														</a>
 													</div>
 													<div class="box-label">
-														<span class="label-product label-sale">Sale</span>
+														<span class="label-product label-sale">No.{{ $loop->index + 1}}</span>
 													</div>
 												</div>
 												<div class="right-block">
 													<div class="caption">
 														<h4>
 															<a href="#"
-																title="Bazem Carlo again is there anyone who loves oreos " target="_self">
-															Bazem Carlo again is there anyone who loves oreos
+																title="{{$product->title}}" target="_self">
+															{{ $product->title }}
 															</a>
 														</h4>
 														<div class="rating">
-															<span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
-															<span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
-															<span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
-															<span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
-															<span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
+															<span class="count">
+															{{ str_repeat('★', round($product->rating)) }}{{ str_repeat('☆', 5 - round($product->rating)) }}
+															</span>
 														</div>
 														<div class="total-price clearfix">
 															<div class="price price-left">
-																<span class="price-new">$100.00</span>
-																<span class="price-old">$120.00</span>
+																<span class="price-new">{{ $product->price }}</span>
+																<span class="price-old">{{ sprintf('%.2f',$product->price * 0.8) }}</span>
 															</div>
+
 															<div class="price-sale price-right">
 																<span class="discount 123">
-																-17%
-																<strong>OFF</strong>
+																{{ $product->sold_count }}
+																<strong>件！</strong>
 																</span>
 															</div>
 														</div>
@@ -393,314 +397,18 @@
 															</a>
 															<a class="btn-button btn-quickview quickview quickview_handler" href="quickview.html" title="Quick View" data-title="Quick View" data-fancybox-type="iframe"><i class="fa fa-search"></i></a>
 															<button class="wishlist btn-button" type="button" data-toggle="tooltip" title="Add to Wish List" onclick="wishlist.add('30');"><i class="fa fa-heart"></i></button>
-															<button class="compare btn-button" type="button" data-toggle="tooltip" title="Compare this Product" onclick="compare.add('30');"><i class="fa fa-exchange"></i></button>
-															<button class="addToCart btn-button" type="button" data-toggle="tooltip" title="Add to cart" onclick="cart.add('30');"> <span class="hidden">Add to cart</span></button>
+															<button class="addToCart btn-button" type="button" data-toggle="tooltip" title="Add to cart" onclick="cart.add('30');"> <span class="hidden">加入购物车</span></button>
 														</div>
 													</div>
 												</div>
 											</div>
 										</div>
 										</div>
-																<div class="ltabs-item ">
-																	<div class="item-inner product-thumb transition product-layout">
-																		<div class="product-item-container">
-																			<div class="left-block">
-																				<div class="image product-image-container ">
-																					<a class="lt-image"
-																						href="product.html" target="_self"
-																						title="Bazem Carlo again is there anyone who loves oreos">
-																					<img src="image/catalog/demo/product/book/5-370x370.jpg" alt="Bazem Carlo again is there anyone who loves oreos">
-																					</a>
-																				</div>
-																				<div class="box-label">
-																					<span class="label-product label-sale">Sale</span>
-																				</div>
-																			</div>
-																			<div class="right-block">
-																				<div class="caption">
-																					<h4>
-																						<a href="product.html"
-																							title="Bazem Carlo again is there anyone who loves oreos" target="_self">
-																						Bazem Carlo again is there anyone who loves oreos
-																						</a>
-																					</h4>
-																					<div class="rating">
-																						<span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
-																						<span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
-																						<span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
-																						<span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
-																						<span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
-																					</div>
-																					<div class="total-price clearfix">
-																						<div class="price price-left">
-																							<span class="price-new">$89.00</span>
-																							<span class="price-old">$100.00</span>
-																						</div>
-																						<div class="price-sale price-right">
-																							<span class="discount 123">
-																							-11%
-																							<strong>OFF</strong>
-																							</span>
-																						</div>
-																					</div>
-																				</div>
-																				<div class="button-group">
-																					<div class="button-inner so-quickview">
-																						<a class="lt-image hidden"
-																							href="product.html" target="_self"
-																							title="Bazem Carlo again is there anyone who loves oreos">
-																						</a>
-																						<a class="btn-button btn-quickview quickview quickview_handler" href="quickview.html" title="Quick View" data-title="Quick View" data-fancybox-type="iframe"><i class="fa fa-search"></i></a>
-																						<button class="wishlist btn-button" type="button" data-toggle="tooltip" title="Add to Wish List" onclick="wishlist.add('30');"><i class="fa fa-heart"></i></button>
-																						<button class="compare btn-button" type="button" data-toggle="tooltip" title="Compare this Product" onclick="compare.add('30');"><i class="fa fa-exchange"></i></button>
-																						<button class="addToCart btn-button" type="button" data-toggle="tooltip" title="Add to cart" onclick="cart.add('30');"> <span class="hidden">Add to cart</span></button>
-																					</div>
-																				</div>
-																			</div>
-																		</div>
-																	</div>
-																</div>
-																<div class="ltabs-item ">
-																	<div class="item-inner product-thumb transition product-layout">
-																		<div class="product-item-container">
-																			<div class="left-block">
-																				<div class="image product-image-container ">
-																					<a class="lt-image"
-																						href="product.html" target="_self"
-																						title="Bazem Carlo again is there anyone who loves oreos">
-																					<img src="image/catalog/demo/product/book/9-370x370.jpg" alt="Bazem Carlo again is there anyone who loves oreos">
-																					</a>
-																				</div>
-																				<div class="box-label">
-																					<span class="label-product label-sale">Sale</span>
-																				</div>
-																			</div>
-																			<div class="right-block">
-																				<div class="caption">
-																					<h4>
-																						<a href="product.html"
-																							title="Bazem Carlo again is there anyone who loves oreos" target="_self">
-																						Bazem Carlo again is there anyone who loves oreos
-																						</a>
-																					</h4>
-																					<div class="rating">
-																						<span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
-																						<span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
-																						<span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
-																						<span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
-																						<span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
-																					</div>
-																					<div class="total-price clearfix">
-																						<div class="price price-left">
-																							<span class="price-new">$34.00</span>
-																							<span class="price-old">$1,000.00</span>
-																						</div>
-																						<div class="price-sale price-right">
-																							<span class="discount 123">
-																							-97%
-																							<strong>OFF</strong>
-																							</span>
-																						</div>
-																					</div>
-																				</div>
-																				<div class="button-group">
-																					<div class="button-inner so-quickview">
-																						<a class="lt-image hidden"
-																							href="product.html" target="_self"
-																							title="Bazem Carlo again is there anyone who loves oreos">
-																						</a>
-																						<a class="btn-button btn-quickview quickview quickview_handler" href="quickview.html" title="Quick View" data-title="Quick View" data-fancybox-type="iframe"><i class="fa fa-search"></i></a>
-																						<button class="wishlist btn-button" type="button" data-toggle="tooltip" title="Add to Wish List" onclick="wishlist.add('30');"><i class="fa fa-heart"></i></button>
-																						<button class="compare btn-button" type="button" data-toggle="tooltip" title="Compare this Product" onclick="compare.add('30');"><i class="fa fa-exchange"></i></button>
-																						<button class="addToCart btn-button" type="button" data-toggle="tooltip" title="Add to cart" onclick="cart.add('30');"> <span class="hidden">Add to cart</span></button>
-																					</div>
-																				</div>
-																			</div>
-																		</div>
-																	</div>
-																</div>
-																<div class="ltabs-item ">
-																	<div class="item-inner product-thumb transition product-layout">
-																		<div class="product-item-container">
-																			<div class="left-block">
-																				<div class="image product-image-container ">
-																					<a class="lt-image"
-																						href="product.html" target="_self"
-																						title="Bazem Carlo again is there anyone who loves oreos">
-																					<img src="image/catalog/demo/product/book/1-370x370.jpg" alt="Bazem Carlo again is there anyone who loves oreos">
-																					</a>
-																				</div>
-																				<div class="box-label">
-																					<span class="label-product label-sale">Sale</span>
-																				</div>
-																			</div>
-																			<div class="right-block">
-																				<div class="caption">
-																					<h4>
-																						<a href="#"
-																							title="Bazem Carlo again is there anyone who loves oreos" target="_self">
-																						Bazem Carlo again is there anyone who loves oreos
-																						</a>
-																					</h4>
-																					<div class="rating">
-																						<span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
-																						<span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
-																						<span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
-																						<span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
-																						<span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
-																					</div>
-																					<div class="total-price clearfix">
-																						<div class="price price-left">
-																							<span class="price-new">$40.00</span>
-																							<span class="price-old">$100.00</span>
-																						</div>
-																						<div class="price-sale price-right">
-																							<span class="discount 123">
-																							-60%
-																							<strong>OFF</strong>
-																							</span>
-																						</div>
-																					</div>
-																				</div>
-																				<div class="button-group">
-																					<div class="button-inner so-quickview">
-																						<a class="lt-image hidden"
-																							href="#" target="_self"
-																							title="Bazem Carlo again is there anyone who loves oreos">
-																						</a>
-																						<a class="btn-button btn-quickview quickview quickview_handler" href="quickview.html" title="Quick View" data-title="Quick View" data-fancybox-type="iframe"><i class="fa fa-search"></i></a>
-																						<button class="wishlist btn-button" type="button" data-toggle="tooltip" title="Add to Wish List" onclick="wishlist.add('30');"><i class="fa fa-heart"></i></button>
-																						<button class="compare btn-button" type="button" data-toggle="tooltip" title="Compare this Product" onclick="compare.add('30');"><i class="fa fa-exchange"></i></button>
-																						<button class="addToCart btn-button" type="button" data-toggle="tooltip" title="Add to cart" onclick="cart.add('30');"> <span class="hidden">Add to cart</span></button>
-																					</div>
-																				</div>
-																			</div>
-																		</div>
-																	</div>
-																</div>
-																<div class="ltabs-item ">
-																	<div class="item-inner product-thumb transition product-layout">
-																		<div class="product-item-container">
-																			<div class="left-block">
-																				<div class="image product-image-container ">
-																					<a class="lt-image"
-																						href="product.html" target="_self"
-																						title="Bazem Carlo again is there anyone who loves oreos">
-																					<img src="image/catalog/demo/product/book/2-370x370.jpg" alt="Bazem Carlo again is there anyone who loves oreos">
-																					</a>
-																				</div>
-																				<div class="box-label">
-																					<span class="label-product label-sale">Sale</span>
-																				</div>
-																			</div>
-																			<div class="right-block">
-																				<div class="caption">
-																					<h4>
-																						<a href="#"
-																							title="Bazem Carlo again is there anyone who loves oreos" target="_self">
-																						Bazem Carlo again is there anyone who loves oreos
-																						</a>
-																					</h4>
-																					<div class="rating">
-																						<span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
-																						<span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
-																						<span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
-																						<span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
-																						<span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
-																					</div>
-																					<div class="total-price clearfix">
-																						<div class="price price-left">
-																							<span class="price-new">$45.00</span>
-																							<span class="price-old">$50.00</span>
-																						</div>
-																						<div class="price-sale price-right">
-																							<span class="discount 123">
-																							-10%
-																							<strong>OFF</strong>
-																							</span>
-																						</div>
-																					</div>
-																				</div>
-																				<div class="button-group">
-																					<div class="button-inner so-quickview">
-																						<a class="lt-image hidden"
-																							href="#" target="_self"
-																							title="Bazem Carlo again is there anyone who loves oreos">
-																						</a>
-																						<a class="btn-button btn-quickview quickview quickview_handler" href="quickview.html" title="Quick View" data-title="Quick View" data-fancybox-type="iframe"><i class="fa fa-search"></i></a>
-																						<button class="wishlist btn-button" type="button" data-toggle="tooltip" title="Add to Wish List" onclick="wishlist.add('30');"><i class="fa fa-heart"></i></button>
-																						<button class="compare btn-button" type="button" data-toggle="tooltip" title="Compare this Product" onclick="compare.add('30');"><i class="fa fa-exchange"></i></button>
-																						<button class="addToCart btn-button" type="button" data-toggle="tooltip" title="Add to cart" onclick="cart.add('30');"> <span class="hidden">Add to cart</span></button>
-																					</div>
-																				</div>
-																			</div>
-																		</div>
-																	</div>
-																</div>
-																<div class="ltabs-item ">
-																	<div class="item-inner product-thumb transition product-layout">
-																		<div class="product-item-container">
-																			<div class="left-block">
-																				<div class="image product-image-container ">
-																					<a class="lt-image"
-																						href="product.html" target="_self"
-																						title="Bazem Carlo again is there anyone who loves oreos">
-																					<img src="image/catalog/demo/product/book/3-370x370.jpg" alt="Bazem Carlo again is there anyone who loves oreos">
-																					</a>
-																					<div class="text-location"><span>test 2</span></div>
-																				</div>
-																				<div class="box-label">
-																					<span class="label-product label-sale">Sale</span>
-																				</div>
-																			</div>
-																			<div class="right-block">
-																				<div class="caption">
-																					<h4>
-																						<a href="product.html"
-																							title="Bazem Carlo again is there anyone who loves oreos" target="_self">
-																						Bazem Carlo again is there anyone who loves oreos
-																						</a>
-																					</h4>
-																					<div class="rating">
-																						<span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
-																						<span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
-																						<span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
-																						<span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
-																						<span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
-																					</div>
-																					<div class="total-price clearfix">
-																						<div class="price price-left">
-																							<span class="price-new">$80.00</span>
-																							<span class="price-old">$100.00</span>
-																						</div>
-																						<div class="price-sale price-right">
-																							<span class="discount 123">
-																							-20%
-																							<strong>OFF</strong>
-																							</span>
-																						</div>
-																					</div>
-																				</div>
-																				<div class="button-group">
-																					<div class="button-inner so-quickview">
-																						<a class="lt-image hidden"
-																							href="#" target="_self"
-																							title="Bazem Carlo again is there anyone who loves oreos">
-																						</a>
-																						<a class="btn-button btn-quickview quickview quickview_handler" href="quickview.html" title="Quick View" data-title="Quick View" data-fancybox-type="iframe"><i class="fa fa-search"></i></a>
-																						<button class="wishlist btn-button" type="button" data-toggle="tooltip" title="Add to Wish List" onclick="wishlist.add('30');"><i class="fa fa-heart"></i></button>
-																						<button class="compare btn-button" type="button" data-toggle="tooltip" title="Compare this Product" onclick="compare.add('48');"><i class="fa fa-exchange"></i></button>
-																						<button class="addToCart btn-button" type="button" data-toggle="tooltip" title="Add to cart" onclick="cart.add('30');"> <span class="hidden">Add to cart</span></button>
-																					</div>
-																				</div>
-																			</div>
-																		</div>
-																	</div>
-																</div>
-
+										@endforeach
 								</div>
 							</div>
-							<div class="ltabs-items items-category-4 grid" data-total="6">
+
+							<div class="ltabs-items items-category-4 grid" data-total="10">
 								<div class="ltabs-loading"></div>
 							</div>
 							</div>
@@ -1057,29 +765,23 @@
 								</div>
 								</div>
 							</div>
-							<div class="ltabs-items items-category-2 grid" data-total="16">
-								<div class="ltabs-loading"></div>
-							</div>
-							<div class="ltabs-items  items-category-3 grid" data-total="16">
-								<div class="ltabs-loading"></div>
-							</div>
 							</div>
 						</div>
 						</div>
 					</div>
 					</div>
 					<div class="home1-banner-2 clearfix">
-										<div class="item-1 col-lg-6 col-md-6 col-sm-6 banners">
-											<div>
-												<a title="Static Image" href="#"><img src="image/catalog/demo/banners/home1/bn-3.jpg" alt="Static Image"></a>
-											</div>
-										</div>
-										<div class="item-2 col-lg-6 col-md-6 col-sm-6 banners">
-											<div>
-												<a title="Static Image" href="#"><img src="image/catalog/demo/banners/home1/bn-4.jpg" alt="Static Image"></a>
-											</div>
-										</div>
-									</div>
+							<div class="item-1 col-lg-6 col-md-6 col-sm-6 banners">
+								<div>
+									<a title="Static Image" href="#"><img src="image/catalog/demo/banners/home1/bn-3.jpg" alt="Static Image"></a>
+								</div>
+							</div>
+							<div class="item-2 col-lg-6 col-md-6 col-sm-6 banners">
+								<div>
+									<a title="Static Image" href="#"><img src="image/catalog/demo/banners/home1/bn-4.jpg" alt="Static Image"></a>
+								</div>
+							</div>
+						</div>
 				</div>
 				</div>
 			</div>
