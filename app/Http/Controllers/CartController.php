@@ -8,7 +8,7 @@ use App\Models\ProductSku;
 use App\Services\CartService;
 
 class CartController extends Controller
-{   
+{
     protected $cartService;
 
      // 利用 Laravel 的自动解析功能注入 CartService 类
@@ -31,7 +31,7 @@ class CartController extends Controller
         $cartItems = $this->cartService->get();
         $addresses = $request->user()->addresses()->orderBy('last_used_at', 'desc')->get();
 
-        return view('cart.index', ['cartItems' => $cartItems, 'addresses' => $addresses]);
+        return view('cart.cart', ['cartItems' => $cartItems, 'addresses' => $addresses]);
     }
 
     //从购物车删除商品

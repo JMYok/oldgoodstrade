@@ -35,12 +35,13 @@ class ProductsController extends Controller
     public function search(Request $request,CategoryService $categoryService)
     {
       /*实现筛选和排序*/
+
         // 判断是否有提交 search 参数，如果有就赋值给 $search 变量
         // search 参数用来模糊搜索商品
         if ($search = $request->input('search', '')) {
             $like = '%'.$search.'%';
             // 模糊搜索商品标题、商品详情、SKU 标题、SKU描述
-            $builder->where(function ($query) use ($like) {
+            $this->builder->where(function ($query) use ($like) {
                 $query->where('title', 'like', $like)
                     ->orWhere('description', 'like', $like)
                     ->orWhereHas('skus', function ($query) use ($like) {
@@ -55,12 +56,12 @@ class ProductsController extends Controller
            // 如果这是一个父类目
            if ($category->is_directory) {
                // 则筛选出该父类目下所有子类目的商品
-               $builder->whereHas('category', function ($query) use ($category) {
+               $this->builder->whereHas('category', function ($query) use ($category) {
                    $query->where('path', 'like', $category->path.$category->id.'-%');
                });
            } else {
                // 如果这不是一个父类目，则直接筛选此类目下的商品
-               $builder->where('category_id', $category->id);
+               $this->builder->where('category_id', $category->id);
            }
        }
 
@@ -72,9 +73,14 @@ class ProductsController extends Controller
                 // 如果字符串的开头是这 3 个字符串之一，说明是一个合法的排序值
                 if (in_array($m[1], ['price', 'sold_count', 'rating'])) {
                     // 根据传入的排序值来构造排序参数
-                    $builder->orderBy($m[1], $m[2]);
+                    $this->builder->orderBy($m[1], $m[2]);
                 }
             }
+        }
+
+        //是否有每页个数参数
+        if($limit = $request->input('limit','')){
+            $this->products = $this->builder->paginate($limit);
         }
 
         return view('products.search', [
@@ -82,6 +88,7 @@ class ProductsController extends Controller
             'filters'  => [
                 'search' => $search,
                 'order'  => $order,
+                'limit'  => $limit
             ],
             // 等价于 isset($category) ? $category : null
             'category' => $category ?? null,

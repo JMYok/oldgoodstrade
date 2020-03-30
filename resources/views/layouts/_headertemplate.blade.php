@@ -35,6 +35,8 @@
   	<link href="{{URL::asset('css/responsive.css')}}" rel="stylesheet">
     <link id="color_scheme2" href="{{URL::asset('css/theme.css')}}" rel="stylesheet">
   	<link href="{{URL::asset('css/quickview/quickview.css')}}" rel="stylesheet">
+
+    <script type="text/javascript" src="{{URL::asset('js/jquery-2.2.4.min.js')}}"></script>
   	<!-- Google web fonts
   		============================================ -->
   	<link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700" rel="stylesheet" type="text/css">
