@@ -42,5 +42,5 @@
   	<style type="text/css">
   		body{font-family: Roboto, sans-serif;}
   	</style>
-    <title>@yield('title', 'OldTreasure') - 旧物集市</title>
+    <title>@yield('title', 'OldTreasure') - 数码集市</title>
 </head>

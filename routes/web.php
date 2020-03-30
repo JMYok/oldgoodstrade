@@ -13,10 +13,10 @@
 
 Route::redirect('/', '/products')->name('root');
 
-Route::view('/test/home','products/home');
 Route::view('/test/address','pages/newpages/addressbook');
 Route::view('/test/orderinformation','pages/newpages/orderinformation');
 Route::view('/test/cart','pages/newpages/cart');
+Route::view('/test/search','products/search');
 Route::view('/test/productinfo','pages/newpages/productinfo');
 Route::view('/test/wishlist','pages/newpages/wishlist');
 
@@ -25,8 +25,9 @@ Route::view('/test/wishlist','pages/newpages/wishlist');
 
 
 
-/*商品主页*/
+/*商品主页\搜索页*/
 Route::get('products', 'ProductsController@index')->name('products.index');
+Route::get('s_products', 'ProductsController@search')->name('products.search');
 
 /*排行榜*/
 Route::get('rankingsale','RankController@sale')->name('rank.sale');

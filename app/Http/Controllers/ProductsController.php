@@ -12,18 +12,33 @@ use App\Services\CategoryService;
 
 class ProductsController extends Controller
 {
-    public function index(Request $request,CategoryService $categoryService)
-    {
-    	/*实现筛选和排序*/
-        // 创建一个查询构造器
-        $builder = Product::query()->where('on_sale', true);
+    // 创建一个查询构造器
+    private $builder;
+    //所有分页数据
+    private $products;
 
+    public function __construct()
+    {
+      $this->builder = Product::query()->where('on_sale', true);
+    }
+
+    /* 主页所有商品 */
+    public function index()
+    {
+        $this->products = $this->builder->paginate(12);
+        return view('products.home', [
+            'products' => $this->products,
+        ]);
+    }
+
+    /* 搜索 */
+    public function search(Request $request,CategoryService $categoryService)
+    {
+      /*实现筛选和排序*/
         // 判断是否有提交 search 参数，如果有就赋值给 $search 变量
         // search 参数用来模糊搜索商品
         if ($search = $request->input('search', '')) {
             $like = '%'.$search.'%';
-
-
             // 模糊搜索商品标题、商品详情、SKU 标题、SKU描述
             $builder->where(function ($query) use ($like) {
                 $query->where('title', 'like', $like)
@@ -62,9 +77,8 @@ class ProductsController extends Controller
             }
         }
 
-        $products = $builder->paginate(12);
-        return view('products.home', [
-            'products' => $products,
+        return view('products.search', [
+            'products' => $this->products,
             'filters'  => [
                 'search' => $search,
                 'order'  => $order,
@@ -72,7 +86,9 @@ class ProductsController extends Controller
             // 等价于 isset($category) ? $category : null
             'category' => $category ?? null,
         ]);
+
     }
+
 
     /*商品详情页*/
     public function show(Product $product, Request $request)
