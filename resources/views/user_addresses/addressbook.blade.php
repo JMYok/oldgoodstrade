@@ -1,5 +1,5 @@
 @extends('layouts.apptemplate')
-@section('title','我的购物车')
+@section('title','地址簿')
 
 @section('content')
 <body class="account-login account res layout-1">
@@ -175,165 +175,57 @@
 
 
       <!-- Main Container  -->
-<div class="container">
-  <ul class="breadcrumb">
-    <li><a href="{{ route('root') }}"><i class="fa fa-home"></i></a></li>
-    <li><a href="{{ route('cart.index') }}">购物车</a></li>
-  </ul>
+    	<div class="main-container container">
+    		<ul class="breadcrumb">
+    			<li><a href="{{ route('root') }}"><i class="fa fa-home"></i></a></li>
+          <li><a href="{{ route('user_addresses.index') }}">地址簿</i></a></li>
+    		</ul>
 
-  <div class="row">
-    <div id="content" class="col-sm-12">
-      <h1>购物车
-      </h1>
-      <div class="table-responsive">
-        <table class="table table-bordered">
-          <thead>
-            <tr>
-              <th><input type="checkbox" id="select-all"></th>
-              <td class="text-center">图片</td>
-              <td class="text-left">商品名称</td>
-              <td class="text-left">单价</td>
-              <td class="text-right">数量</td>
-              <td class="text-right">总价</td>
-            </tr>
-          </thead>
-          <tbody>
-            @foreach($cartItems as $item)
-            <tr data-id="{{ $item->productSku->id }}">
-              <td>
-                <input type="checkbox" name="select" value="{{ $item->productSku->id }}" {{ $item->productSku->product->on_sale ? 'checked' : 'disabled' }}>
-              </td>
-              <td class="text-center">
-                <a target="_blank" href="{{ route('products.show', [$item->productSku->product_id]) }}">
-                <img width="100" height="100" src="{{ $item->productSku->product->image_url }}" alt="{{ $item->productSku->product->description }}" title="{{ $item->productSku->product->title }}" class="img-thumbnail">
-                </a>
-            </td>
-              <td class="text-left"><a href="#">{{ $item->productSku->product->title }}</a><br>
-                <small>类型:{{ $item->productSku->title }}</small>
-              </td>
+    		<div class="row">
+    			<!--Middle Part Start-->
+    			<div id="content" class="col-md-12">
+    				<h2 class="title">地址簿</h2>
+    				<div class="table-responsive">
+    					<table class="table table-bordered table-hover">
+    						<thead>
+    							<tr>
+    								<th class="text-center">收货人</th>
+    								<th class="text-left">地址</th>
+    								<th class="text-center">邮编</th>
+    								<th class="text-center">电话</th>
+    								<th class="text-center">操作</th>
+    							</tr>
+    						</thead>
+    						<tbody>
+                  @foreach($addresses as $address)
+    							<tr>
+    								<td class="text-center">
+    								{{ $address->contact_name }}
+    								</td>
+    								<td class="text-left">
+                      {{ $address->full_address }}
+    								</td>
+    								<td class="text-center">{{ $address->zip }}</td>
+    								<td class="text-center">{{ $address->contact_phone }}</td>
+    								<td class="text-center">
+                      <button class="btn btn-primary">修改</button>
+                      <button class="btn btn-danger">删除</button>
+                    </td>
+    							</tr>
+                  @endforeach
 
-              <td class="text-left">
-                ￥{{ $item->productSku->price }}
-              </td>
+    						</tbody>
+    					</table>
+    				</div>
 
-              <td class="text-left"><div class="input-group btn-block" style="max-width: 200px;">
-                <input type="text" class="form-control form-control-sm amount" @if(!$item->productSku->product->on_sale) disabled @endif name="amount" value="{{ $item->amount }}" style="width:50%;">
-                <span class="input-group-addon product_quantity_down fa fa-caret-down"></span>
-                <span class="input-group-addon product_quantity_up fa fa-caret-up"></span>
-                <span class="input-group-btn">
-                <button type="button" data-toggle="tooltip" title="" class="btn btn-danger btn-remove"><i class="fa fa-times-circle"></i></button>
-                </span></div>
-              </td>
-
-              <td class="text-right">￥{{ sprintf('%.2f',$item->productSku->price * $item->amount) }}</td>
-            </tr>
-            @endforeach
-          </tbody>
-
-        </table>
-      </div>
-      <div class="panel-group" id="accordion">
-        <div class="panel panel-default">
-        <div class="panel-heading">
-          <h4 class="panel-title"><a href="#collapse-coupon" class="accordion-toggle" data-toggle="collapse" data-parent="#accordion">使用优惠券<i class="fa fa-caret-down"></i></a></h4>
-        </div>
-        <div id="collapse-coupon" class="panel-collapse collapse">
-          <div class="panel-body">
-            <label class="col-sm-2 control-label" for="input-coupon">输入优惠码</label>
-            <div class="input-group">
-              <input type="text" name="coupon"  id="input-coupon" class="form-control">
-              <span class="input-group-btn">
-                <input type="button" value="使用优惠码" id="button-coupon" data-loading-text="Loading..." class="btn btn-primary">
-              </span>
-            </div>
-          </div>
-        </div>
-        </div>
-
-      </div>
-
-      <!-- <div class="row">
-        <div class="col-sm-4 col-sm-offset-8">
-          <table class="table table-bordered">
-            <tbody>
-              <tr>
-                <td class="text-right"><strong>Sub-Total:</strong></td>
-                <td class="text-right">$99.00</td>
-              </tr>
-              <tr>
-                <td class="text-right"><strong>Eco Tax (-2.00):</strong></td>
-                <td class="text-right">$2.00</td>
-              </tr>
-              <tr>
-                <td class="text-right"><strong>VAT (20%):</strong></td>
-                <td class="text-right">$19.80</td>
-              </tr>
-              <tr>
-                <td class="text-right"><strong>Total:</strong></td>
-                <td class="text-right">$120.80</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div> -->
-
-      <div class="buttons clearfix">
-        <div class="pull-left"><a href="{{ route('root') }}" class="btn btn-default">继续购物</a></div>
-        <div class="pull-right"><a href="#" class="btn btn-primary">下单</a></div>
-      </div>
-    </div>
+    			</div>
+    			<!--Middle Part End-->
+    		</div>
+    	</div>
+    	<!-- //Main Container -->
 
 
-  </div>
-
-</div>
-<!-- //Main Container -->
     </div>
 	<div class="back-to-top"><i class="fa fa-angle-up"></i></div>
 </body>
 @section('content')
-<script type="text/javascript" src="{{ URL::asset('js/jquery-2.2.4.min.js') }}"></script>
-<script type="text/javascript" src="{{ URL::asset('js/app.js') }}"></script>
-<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-<script>
-$(document).ready(function () {
-   // 监听 移除 按钮的点击事件
-   $('.btn-remove').click(function () {
-     // $(this) 可以获取到当前点击的 移除 按钮的 jQuery 对象
-     // closest() 方法可以获取到匹配选择器的第一个祖先元素，在这里就是当前点击的 移除 按钮之上的 <tr> 标签
-     // data('id') 方法可以获取到我们之前设置的 data-id 属性的值，也就是对应的 SKU id
-     var id = $(this).closest('tr').data('id');
-     swal({
-       title: "确认要将该商品移除？",
-       icon: "warning",
-       buttons: ['取消', '确定'],
-       dangerMode: true,
-     })
-     .then(function(willDelete) {
-       // 用户点击 确定 按钮，willDelete 的值就会是 true，否则为 false
-       if (!willDelete) {
-         return;
-       }
-       axios.delete('/cart/' + id)
-         .then(function () {
-           location.reload();
-         })
-     });
-   });
-
-   // 监听 全选/取消全选 单选框的变更事件
-   $('#select-all').change(function() {
-     // 获取单选框的选中状态
-     // prop() 方法可以知道标签中是否包含某个属性，当单选框被勾选时，对应的标签就会新增一个 checked 的属性
-     var checked = $(this).prop('checked');
-     // 获取所有 name=select 并且不带有 disabled 属性的勾选框
-     // 对于已经下架的商品我们不希望对应的勾选框会被选中，因此我们需要加上 :not([disabled]) 这个条件
-     $('input[name=select][type=checkbox]:not([disabled])').each(function() {
-       // 将其勾选状态设为与目标单选框一致
-       $(this).prop('checked', checked);
-     });
-   });
-
- });
-
-</script>
