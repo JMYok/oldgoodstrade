@@ -433,7 +433,8 @@
 
 							<div class="wap-listing-tabs  products-list grid">
 							<div class="ltabs-items-container">
-							<!--Begin Items-->
+
+            	<!--Begin Items-->
 							<div class="ltabs-items ltabs-items-selected ltabs-items-loaded items-category-1" data-total="10">
 								<div class="ltabs-items-inner ltabs-slider">
 								@foreach($saleranks as $product)
@@ -443,7 +444,7 @@
 												<div class="left-block">
 													<div class="image product-image-container ">
 														<a class="lt-image"
-															href="product.html" target="_self"
+															href="{{ route('products.show', ['product' => $product->id]) }}" target="_self"
 															title="{{$product->title}}">
 														<img src="{{ $product->image_url }}" alt="{{$product->title}}">
 														</a>
@@ -455,7 +456,7 @@
 												<div class="right-block">
 													<div class="caption">
 														<h4>
-															<a href="#"
+															<a href="{{ route('products.show', ['product' => $product->id]) }}"
 																title="{{$product->title}}" target="_self">
 															{{ $product->title }}
 															</a>

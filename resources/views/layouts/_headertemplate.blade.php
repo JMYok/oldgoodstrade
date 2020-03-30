@@ -13,6 +13,7 @@
   	<!-- Libs CSS JS
   		============================================ -->
   	<link rel="stylesheet" href="http://cdn.bootstrapmb.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
   	<link href="{{URL::asset('css/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
   	<link href="{{URL::asset('js/datetimepicker/bootstrap-datetimepicker.min.css')}}" rel="stylesheet">
   	<link href="{{URL::asset('js/owl-carousel/owl.carousel.css')}}" rel="stylesheet">

@@ -120,7 +120,7 @@ class ProductsController extends Controller
             ->limit(10) // 取出 10 条
             ->get();
 
-        return view('products.show', [
+        return view('products.product_info', [
             'product' => $product,
             'favored' => $favored,
             'reviews' => $reviews

@@ -15,9 +15,7 @@ Route::redirect('/', '/products')->name('root');
 
 Route::view('/test/address','pages/newpages/addressbook');
 Route::view('/test/orderinformation','pages/newpages/orderinformation');
-Route::view('/test/cart','pages/newpages/cart');
 Route::view('/test/search','products/search');
-Route::view('/test/productinfo','pages/newpages/productinfo');
 Route::view('/test/wishlist','pages/newpages/wishlist');
 
 

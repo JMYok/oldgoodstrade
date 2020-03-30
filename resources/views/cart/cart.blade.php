@@ -192,8 +192,8 @@
               <th><input type="checkbox" id="select-all"></th>
               <td class="text-center">图片</td>
               <td class="text-left">商品名称</td>
-              <td class="text-left">数量</td>
-              <td class="text-right">单价</td>
+              <td class="text-left">单价</td>
+              <td class="text-right">数量</td>
               <td class="text-right">总价</td>
             </tr>
           </thead>
@@ -203,19 +203,27 @@
               <td>
                 <input type="checkbox" name="select" value="{{ $item->productSku->id }}" {{ $item->productSku->product->on_sale ? 'checked' : 'disabled' }}>
               </td>
-              <td class="text-center"> <a target="_blank" href="{{ route('products.show', [$item->productSku->product_id]) }}"><img src="{{ $item->productSku->product->image_url }}" alt="{{ $item->productSku->product->description }}" title="{{ $item->productSku->product->title }}" class="img-thumbnail"></a> </td>
+              <td class="text-center">
+                <a target="_blank" href="{{ route('products.show', [$item->productSku->product_id]) }}">
+                <img width="100" height="100" src="{{ $item->productSku->product->image_url }}" alt="{{ $item->productSku->product->description }}" title="{{ $item->productSku->product->title }}" class="img-thumbnail">
+                </a>
+            </td>
               <td class="text-left"><a href="#">{{ $item->productSku->product->title }}</a><br>
-                <small>{{ $item->productSku->title }}</small>
+                <small>类型:{{ $item->productSku->title }}</small>
               </td>
-              <td class="text-left">Product 5</td>
+
+              <td class="text-left">
+                ￥{{ $item->productSku->price }}
+              </td>
+
               <td class="text-left"><div class="input-group btn-block" style="max-width: 200px;">
-                <input type="text" name="quantity[315]" value="1" size="1" class="form-control">
+                <input type="text" class="form-control form-control-sm amount" @if(!$item->productSku->product->on_sale) disabled @endif name="amount" value="{{ $item->amount }}" style="width:50%;">
                 <span class="input-group-btn">
-                <button type="submit" data-toggle="tooltip" title="" class="btn btn-primary" data-original-titl
-                ="Update"><i class="fa fa-refresh"></i></button>
-                <button type="button" data-toggle="tooltip" title="" class="btn btn-danger" onclick="cart.remove('315');" data-original-title="Remove"><i class="fa fa-times-circle"></i></button>
-                </span></div></td>
-              <td class="text-right">$128.00</td>
+                <button type="button" data-toggle="tooltip" title="" class="btn btn-danger btn-remove"><i class="fa fa-times-circle"></i></button>
+                </span></div>
+              </td>
+
+              <td class="text-right">￥{{ sprintf('%.2f',$item->productSku->price * $item->amount) }}</td>
             </tr>
             @endforeach
           </tbody>
@@ -282,3 +290,48 @@
 	<div class="back-to-top"><i class="fa fa-angle-up"></i></div>
 </body>
 @section('content')
+<script type="text/javascript" src="{{ URL::asset('js/jquery-2.2.4.min.js') }}"></script>
+<script type="text/javascript" src="{{ URL::asset('js/app.js') }}"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+$(document).ready(function () {
+   // 监听 移除 按钮的点击事件
+   $('.btn-remove').click(function () {
+     // $(this) 可以获取到当前点击的 移除 按钮的 jQuery 对象
+     // closest() 方法可以获取到匹配选择器的第一个祖先元素，在这里就是当前点击的 移除 按钮之上的 <tr> 标签
+     // data('id') 方法可以获取到我们之前设置的 data-id 属性的值，也就是对应的 SKU id
+     var id = $(this).closest('tr').data('id');
+     swal({
+       title: "确认要将该商品移除？",
+       icon: "warning",
+       buttons: ['取消', '确定'],
+       dangerMode: true,
+     })
+     .then(function(willDelete) {
+       // 用户点击 确定 按钮，willDelete 的值就会是 true，否则为 false
+       if (!willDelete) {
+         return;
+       }
+       axios.delete('/cart/' + id)
+         .then(function () {
+           location.reload();
+         })
+     });
+   });
+
+   // 监听 全选/取消全选 单选框的变更事件
+   $('#select-all').change(function() {
+     // 获取单选框的选中状态
+     // prop() 方法可以知道标签中是否包含某个属性，当单选框被勾选时，对应的标签就会新增一个 checked 的属性
+     var checked = $(this).prop('checked');
+     // 获取所有 name=select 并且不带有 disabled 属性的勾选框
+     // 对于已经下架的商品我们不希望对应的勾选框会被选中，因此我们需要加上 :not([disabled]) 这个条件
+     $('input[name=select][type=checkbox]:not([disabled])').each(function() {
+       // 将其勾选状态设为与目标单选框一致
+       $(this).prop('checked', checked);
+     });
+   });
+
+ });
+
+</script>
