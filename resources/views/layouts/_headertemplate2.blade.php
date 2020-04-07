@@ -49,40 +49,10 @@
                          <div class="shopcart">
                             <span class="handle pull-left"></span>
                             <div class="cart-info">
-                               <h2 class="title-cart">购物车</h2>
-                               <h2 class="title-cart2 hidden">我的购物车</h2>
-                               <span class="total-shopping-cart cart-total-full">
-                               <span class="items_cart">2 </span><span class="items_cart2">item(s)</span><span class="items_carts"> - $206.80</span>
-                               </span>
+                               <h2 class="title-cart" style="margin-top:20%;">购物车</h2>
                             </div>
                          </div>
                       </a>
-                      <ul class="dropdown-menu pull-right shoppingcart-box">
-                         <li class="content-item">
-                             <table class="table table-striped" style="margin-bottom:10px;">
-                                 <tbody>
-                                     <tr>
-                                         <td class="text-center size-img-cart">
-                                             <a href="product.html"><img src="{{URL::asset('image/catalog/demo/product/travel/10-54x54.jpg')}}" alt="Bougainvilleas on Lombard Street,  San Francisco, Tokyo" title="Bougainvilleas on Lombard Street,  San Francisco, Tokyo" class="img-thumbnail"></a>
-                                         </td>
-                                         <td class="text-left"><a href="product.html">Bougainvilleas on Lombard Street,  San Francisco, Tokyo</a>
-                                             <br> - <small>Size M</small> </td>
-                                         <td class="text-right">x1</td>
-                                         <td class="text-right">$120.80</td>
-                                         <td class="text-center">
-                                             <button type="button" title="Remove" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></button>
-                                         </td>
-                                     </tr>
-                                 </tbody>
-                             </table>
-
-                         </li>
-                         <li>
-                            <div class="checkout clearfix">
-                               <a href="{{route('cart.index')}}" class="btn btn-view-cart inverse">查看购物车</a>
-                            </div>
-                         </li>
-                      </ul>
                    </div>
                 </div>
              </div>

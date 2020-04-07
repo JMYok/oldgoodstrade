@@ -2,8 +2,8 @@
 <html>
         @include('layouts._headertemplate')
 <body>
-        @yield('content')
-        @include('layouts._footertemplate')
+    @yield('content')
+    @include('layouts._footertemplate')
 
 <script type="text/javascript" src="{{URL::asset('js/jquery-2.2.4.min.js')}}"></script>
 <script type="text/javascript" src="http://cdn.bootstrapmb.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>

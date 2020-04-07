@@ -74,7 +74,6 @@
 												<button type="submit" class="button-search btn btn-default btn-lg" name="submit_search"><i class="fa fa-search"></i><span class="hidden">搜索</span></button>
 												</span>
 											</div>
-											<input type="hidden" name="route" value="product/search">
 										</form>
 
 									</div>
@@ -127,7 +126,7 @@
 					@auth
 					<div class="header_custom_link hidden-xs">
 							<ul>
-								<li class="wishlist"><a href="wishlist.html" class="top-link-wishlist" title="心愿单 "></a></li>
+								<li class="wishlist"><a href="{{ route('products.favorites') }}" class="top-link-wishlist" title="心愿单 "></a></li>
 							</ul>
 					</div>
 					@endauth
