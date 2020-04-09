@@ -25,31 +25,31 @@
 				</div>
 				</div>
 				@else
-				<div class="header-top-right collapsed-block col-lg-6 col-sm-8 col-md-6 col-xs-12 ">
+				<div class="header-top-right collapsed-block col-lg-12 col-sm-12 col-md-12 col-xs-12">
 				<div class="tabBlock" id="TabBlock-1">
-									<ul class="top-link list-inline">
-										<li class="account " id="my_account">
-											<a href="#" title="My Account" class="btn-xs dropdown-toggle" data-toggle="dropdown"> <span>{{Auth::user()->name}}的账户</span> <span class="fa fa-angle-down"></span></a>
-											<ul class="dropdown-menu">
-												<li><a href="{{route('user_addresses.index')}}">收获地址</a></li>
-												<li><a href="{{ route('orders.index') }}">我的订单</a></li>
-												<li><a href="{{ route('products.favorites') }}">我的收藏</a></li>
-												<li>
-														<a href="{{ route('logout') }}"
-																onclick="event.preventDefault();
-																				 document.getElementById('logout-form').submit();">
-																退出登录
-														</a>
-														<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-																{{ csrf_field() }}
-														</form>
-												</li>
-											</ul>
-										</li>
-										</ul>
+					<ul class="top-link list-inline">
+						<li class="account " id="my_account">
+							<a href="#" title="My Account" class="btn-xs dropdown-toggle" data-toggle="dropdown"><strong>{{Auth::user()->name}}的账户</strong> <span class="fa fa-angle-down"></span></a>
+							<ul class="dropdown-menu">
+								<li><a href="{{route('user_addresses.index')}}">收获地址</a></li>
+								<li><a href="{{ route('orders.index') }}">我的订单</a></li>
+								<li><a href="{{ route('products.favorites') }}">我的收藏</a></li>
+								<li>
+										<a href="{{ route('logout') }}"
+												onclick="event.preventDefault();
+																 document.getElementById('logout-form').submit();">
+												退出登录
+										</a>
+										<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+												{{ csrf_field() }}
+										</form>
+								</li>
+							</ul>
+						</li>
+						</ul>
 				</div>
 				</div>
-				@endguest
+        @endguest
 			</div>
 			</div>
 		</div>
@@ -61,17 +61,18 @@
 			<div class="container">
 				<div class="row">
 					<div class="navbar-logo col-lg-3 col-md-12 col-xs-12">
-								<a href="#"><img src="{{URL::asset('images/catalog/demo/logo/logo4.png')}}" title="Your Old treasures Home" alt="Your Old treasures Home"></a>
-							</div>
-							<div class="header-center-right col-lg-6 col-md-7 col-sm-7 col-xs-9">
+								<a href="{{ route('root') }}"><img src="{{URL::asset('images/catalog/demo/logo/logo4.png')}}" title="Your Old treasures Home" alt="Your Old treasures Home"></a>
+					</div>
+							<div class="header-center-right col-lg-6 col-md-8 col-sm-8 col-xs-9">
 								<div class="header_search">
 									<div id="sosearchpro" class="sosearchpro-wrapper so-search ">
 
-										<form  action="{{ route('products.search') }}">
+										<form  action="{{ route('products.search') }}" method="GET">
+                      {{ csrf_field() }}
 											<div id="search0" class="search input-group form-group">
-												<input class="autosearch-input form-control" type="text" value="" size="50" autocomplete="off" placeholder="输入关键字搜索..." name="search">
+												<input class="autosearch-input form-control" type="text" size="50" autocomplete="off" placeholder="输入关键字搜索..." name="search">
 												<span class="input-group-btn">
-												<button type="submit" class="button-search btn btn-default btn-lg" name="submit_search"><i class="fa fa-search"></i><span class="hidden">搜索</span></button>
+												<button type="submit" class="button-search btn btn-default btn-lg" ><i class="fa fa-search"></i><span class="hidden">搜索</span></button>
 												</span>
 											</div>
 										</form>
@@ -79,58 +80,30 @@
 									</div>
 								</div>
 							</div>
-							<div class="header-cart-phone col-lg-3 col-md-5 col-sm-5 col-xs-3"><div class="bt-head header-cart">
+							<div class="header-cart-phone col-lg-3 col-md-4 col-sm-4 col-xs-3">
+              <div class="bt-head header-cart">
 					    <div class="shopping_cart">
-						<div id="cart" class="btn-shopping-cart">
-						<a data-loading-text="Loading... " class="btn-group top_cart dropdown-toggle" data-toggle="dropdown">
-							<div class="shopcart">
-							<span class="handle pull-left"></span>
-							<div class="cart-info">
-								<h2 class="title-cart">购物车</h2>
-								<h2 class="title-cart2 hidden">我的购物车</h2>
-								<span class="total-shopping-cart cart-total-full">
-								<span class="items_cart">2 </span><span class="items_cart2">件物品</span><span class="items_cart2"> - $206.80</span>
-								</span>
-							</div>
-							</div>
-						</a>
-						<ul class="dropdown-menu pull-right shoppingcart-box">
-							<li class="content-item">
-							<table class="table table-striped" style="margin-bottom:10px;">
-								<tbody>
-								<tr>
-									<td class="text-center size-img-cart">
-									<a href="product.html"><img src="{{URL::asset('images/catalog/demo/product/travel/10-54x54.jpg')}}" alt="Bougainvilleas on Lombard Street,  San Francisco, Tokyo" title="Bougainvilleas on Lombard Street,  San Francisco, Tokyo" class="img-thumbnail"></a>
-									</td>
-									<td class="text-left"><a href="#">Bougainvilleas on Lombard Street,  San Francisco, Tokyo</a>
-									<br> - <small>Size M</small>
-									</td>
-									<td class="text-right">x1</td>
-									<td class="text-right">$120.80</td>
-									<td class="text-center">
-									<button type="button" title="Remove" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></button>
-									</td>
-								</tr>
-								</tbody>
-							</table>
-							</li>
-							<li>
-							<div class="checkout clearfix">
-								<a href="{{ route('cart.index') }}" class="btn btn-view-cart inverse">查看购物车</a>
-							</div>
-							</li>
-						</ul>
-						</div>
-					</div>
-					</div>
-					@auth
-					<div class="header_custom_link hidden-xs">
-							<ul>
-								<li class="wishlist"><a href="{{ route('products.favorites') }}" class="top-link-wishlist" title="心愿单 "></a></li>
-							</ul>
-					</div>
-					@endauth
-					</div>
+    						<div id="cart" class="btn-shopping-cart">
+    						<a class="btn-group top_cart" href="{{ route('cart.index') }}">
+    							<div class="shopcart">
+    							<span class="handle pull-left"></span>
+    							<div class="cart-info">
+    								<h2 class="title-cart">购物车</h2>
+    								<h2 class="title-cart2" style="margin-top:15%;">我的购物车</h2>
+    								<span class="total-shopping-cart cart-total-full">
+    								</span>
+    							</div>
+    							</div>
+    						</a>
+    						</div>
+    					</div>
+    					</div>
+    					<div class="header_custom_link hidden-xs">
+    							<ul>
+    								<li class="wishlist"><a href="{{ route('products.favorites') }}" class="top-link-wishlist" title="心愿单 "></a></li>
+    							</ul>
+    					</div>
+					   </div>
 				</div>
 			</div>
 		</div>

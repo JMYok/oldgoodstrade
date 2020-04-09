@@ -1,24 +1,34 @@
+<style>
+li.account > a::before {
+  content: "\f007";
+}
+li > a::before {
+   font-family: 'FontAwesome';
+   margin-right: 7px;
+   font-size: 20px;
+}
+</style>
 <!-- Header Container  -->
  <header id="header" class=" typeheader-1">
     <!-- Header Top -->
     <div class="header-top hidden-compact">
        <div class="container">
           <div class="row">
-             <div class="col-lg-3 col-xs-6 header-logo ">
+             <div class="col-lg-3 col-md-3 col-xs-4 header-logo ">
                 <div class="navbar-logo">
                    <a href="{{ route('products.index') }}"><img src="{{URL::asset('images/catalog/demo/logo/logo-2.png')}}" alt="Your Store" width="110" height="27" title="Your Store"></a>
                 </div>
              </div>
-             <div class="col-lg-7 header-sevices">
+             <div class="col-lg-7 col-md-6">
                 <div class="module html--sevices ">
                    <div class="clearfix sevices-menu">
                       <ul>
                          <li class="col-md-4 item home">
                             <div class="icon"></div>
                             <div class="text">
-                               <a>100 S Manhattan St, Amarillo,</a><a>
+                               <a>100 百草路, 郫县</a><a>
                                </a>
-                               <p><a>TX 79104, North America</a></p>
+                               <p><a>TX 610500, 中国大陆</a></p>
                                <a>
                                </a>
                             </div>
@@ -42,20 +52,30 @@
                 </div>
              </div>
              @auth
-             <div class="col-lg-2 col-xs-6 header-cart">
-                <div class="shopping_cart">
-                   <div id="cart" class="btn-shopping-cart">
-                      <a data-loading-text="Loading... " class="btn-group top_cart dropdown-toggle" data-toggle="dropdown">
-                         <div class="shopcart">
-                            <span class="handle pull-left"></span>
-                            <div class="cart-info">
-                               <h2 class="title-cart" style="margin-top:20%;">购物车</h2>
-                            </div>
-                         </div>
-                      </a>
-                   </div>
-                </div>
-             </div>
+             <div class="header-top-right collapsed-block col-lg-2 col-sm-8 col-md-3 col-xs-8 ">
+         				<div class="tabBlock" id="TabBlock-1">
+         					<ul class="top-link list-inline pull-right">
+         						<li class="account " id="my_account">
+         							<a data-target="#" title="My Account" class="btn-xs dropdown-toggle" data-toggle="dropdown"><span style="font-size:20px;font-weight:bold;">{{Auth::user()->name}}的账户</span> <span class="fa fa-angle-down"></span></a>
+         							<ul class="dropdown-menu">
+         								<li><a href="{{route('user_addresses.index')}}">收获地址</a></li>
+         								<li><a href="{{ route('orders.index') }}">我的订单</a></li>
+         								<li><a href="{{ route('products.favorites') }}">我的收藏</a></li>
+         								<li>
+         										<a href="{{ route('logout') }}"
+         												onclick="event.preventDefault();
+         																 document.getElementById('logout-form').submit();">
+         												退出登录
+         										</a>
+         										<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+         												{{ csrf_field() }}
+         										</form>
+         								</li>
+         							</ul>
+         						</li>
+         						</ul>
+         				</div>
+       				</div>
              @endauth
           </div>
        </div>
@@ -119,13 +139,15 @@
              <!--Searchhome-->
              <div class="col-lg-4 col-md-4 col-sm-11 col-xs-9 header-search">
                 <div id="sosearchpro" class="sosearchpro-wrapper so-search ">
-                  <form action="{{ route('products.search') }}" >
+                  <form action="{{ route('products.search') }}">
                      <div id="search0" class="search input-group form-group">
                         <input class="autosearch-input form-control" id="search-input"  type="text" size="50" autocomplete="off" name="search" placeholder="搜索">
                         <span id="search-form-btn" class="input-group-btn">
                         <button type="submit" class="button-search btn btn-default btn-lg"><i class="fa fa-search"></i></button>
                         </span>
                      </div>
+                     <input type="hidden" name="order" value="{{ $filters['order'] }}">
+                     <input type="hidden" name="limit" value="{{ $filters['limit'] }}">
                   </form>
                 </div>
              </div>

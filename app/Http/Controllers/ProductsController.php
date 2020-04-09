@@ -14,7 +14,8 @@ class ProductsController extends Controller
 {
     // 创建一个查询构造器
     private $builder;
-    //所有分页数据
+
+    //查询后所有分页数据
     private $products;
 
     public function __construct()
@@ -79,7 +80,7 @@ class ProductsController extends Controller
         }
 
         //是否有每页个数参数
-        if($limit = $request->input('limit','')){
+        if($limit = $request->input('limit','12')){
             $this->products = $this->builder->paginate($limit);
         }
 
