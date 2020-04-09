@@ -10,9 +10,10 @@
   	<!-- Favicon
   		============================================ -->
   	<link rel="shortcut icon" type="image/png" href="ico/favicon-16x16.png"/>
-  	<!-- Libs CSS
+  	<!-- Libs CSS JS
   		============================================ -->
   	<link rel="stylesheet" href="http://cdn.bootstrapmb.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
   	<link href="{{URL::asset('css/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
   	<link href="{{URL::asset('js/datetimepicker/bootstrap-datetimepicker.min.css')}}" rel="stylesheet">
   	<link href="{{URL::asset('js/owl-carousel/owl.carousel.css')}}" rel="stylesheet">
@@ -35,6 +36,8 @@
   	<link href="{{URL::asset('css/responsive.css')}}" rel="stylesheet">
     <link id="color_scheme2" href="{{URL::asset('css/theme.css')}}" rel="stylesheet">
   	<link href="{{URL::asset('css/quickview/quickview.css')}}" rel="stylesheet">
+
+    <script type="text/javascript" src="{{URL::asset('js/jquery-2.2.4.min.js')}}"></script>
   	<!-- Google web fonts
   		============================================ -->
   	<link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700" rel="stylesheet" type="text/css">
@@ -42,5 +45,5 @@
   	<style type="text/css">
   		body{font-family: Roboto, sans-serif;}
   	</style>
-    <title>@yield('title', 'OldTreasure') - 旧物集市</title>
+    <title>@yield('title', 'OldTreasure') - 数码集市</title>
 </head>

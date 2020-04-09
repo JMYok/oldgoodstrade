@@ -48,14 +48,14 @@ class OrdersController extends Controller
             ->orderBy('created_at', 'desc')
             ->paginate();
 
-        return view('orders.index', ['orders' => $orders]);
+        return view('orders.order_list', ['orders' => $orders]);
     }
 
     //订单详情页
     public function show(Order $order, Request $request)
     {
         $this->authorize('own', $order);
-        return view('orders.show', ['order' => $order->load(['items.productSku', 'items.product'])]);
+        return view('orders.orderinformation', ['order' => $order->load(['items.productSku', 'items.product'])]);
     }
 
     //确认收货收货

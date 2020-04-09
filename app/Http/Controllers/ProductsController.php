@@ -12,20 +12,37 @@ use App\Services\CategoryService;
 
 class ProductsController extends Controller
 {
-    public function index(Request $request,CategoryService $categoryService)
+    // 创建一个查询构造器
+    private $builder;
+
+    //查询后所有分页数据
+    private $products;
+
+    public function __construct()
     {
-    	/*实现筛选和排序*/
-        // 创建一个查询构造器
-        $builder = Product::query()->where('on_sale', true);
+      $this->builder = Product::query()->where('on_sale', true);
+    }
+
+    /* 主页所有商品 */
+    public function index()
+    {
+        $this->products = $this->builder->paginate(12);
+        return view('products.home', [
+            'products' => $this->products,
+        ]);
+    }
+
+    /* 搜索 */
+    public function search(Request $request,CategoryService $categoryService)
+    {
+      /*实现筛选和排序*/
 
         // 判断是否有提交 search 参数，如果有就赋值给 $search 变量
         // search 参数用来模糊搜索商品
         if ($search = $request->input('search', '')) {
             $like = '%'.$search.'%';
-
-
             // 模糊搜索商品标题、商品详情、SKU 标题、SKU描述
-            $builder->where(function ($query) use ($like) {
+            $this->builder->where(function ($query) use ($like) {
                 $query->where('title', 'like', $like)
                     ->orWhere('description', 'like', $like)
                     ->orWhereHas('skus', function ($query) use ($like) {
@@ -40,12 +57,12 @@ class ProductsController extends Controller
            // 如果这是一个父类目
            if ($category->is_directory) {
                // 则筛选出该父类目下所有子类目的商品
-               $builder->whereHas('category', function ($query) use ($category) {
+               $this->builder->whereHas('category', function ($query) use ($category) {
                    $query->where('path', 'like', $category->path.$category->id.'-%');
                });
            } else {
                // 如果这不是一个父类目，则直接筛选此类目下的商品
-               $builder->where('category_id', $category->id);
+               $this->builder->where('category_id', $category->id);
            }
        }
 
@@ -57,22 +74,29 @@ class ProductsController extends Controller
                 // 如果字符串的开头是这 3 个字符串之一，说明是一个合法的排序值
                 if (in_array($m[1], ['price', 'sold_count', 'rating'])) {
                     // 根据传入的排序值来构造排序参数
-                    $builder->orderBy($m[1], $m[2]);
+                    $this->builder->orderBy($m[1], $m[2]);
                 }
             }
         }
 
-        $products = $builder->paginate(12);
-        return view('products.index', [
-            'products' => $products,
+        //是否有每页个数参数
+        if($limit = $request->input('limit','12')){
+            $this->products = $this->builder->paginate($limit);
+        }
+
+        return view('products.search', [
+            'products' => $this->products,
             'filters'  => [
                 'search' => $search,
                 'order'  => $order,
+                'limit'  => $limit
             ],
             // 等价于 isset($category) ? $category : null
             'category' => $category ?? null,
         ]);
+
     }
+
 
     /*商品详情页*/
     public function show(Product $product, Request $request)
@@ -97,7 +121,7 @@ class ProductsController extends Controller
             ->limit(10) // 取出 10 条
             ->get();
 
-        return view('products.show', [
+        return view('products.product_info', [
             'product' => $product,
             'favored' => $favored,
             'reviews' => $reviews
