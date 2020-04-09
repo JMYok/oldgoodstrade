@@ -146,8 +146,10 @@ li > a::before {
                         <button type="submit" class="button-search btn btn-default btn-lg"><i class="fa fa-search"></i></button>
                         </span>
                      </div>
+                     @if(isset($filters))
                      <input type="hidden" name="order" value="{{ $filters['order'] }}">
                      <input type="hidden" name="limit" value="{{ $filters['limit'] }}">
+                     @endif
                   </form>
                 </div>
              </div>
