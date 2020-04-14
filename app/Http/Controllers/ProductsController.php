@@ -23,12 +23,31 @@ class ProductsController extends Controller
       $this->builder = Product::query()->where('on_sale', true);
     }
 
-    /* 主页所有商品 */
+    /* 主页各父类目所有商品 */
     public function index()
     {
-        $this->products = $this->builder->paginate(12);
+        $data = $this->builder->get();
+        $res = $data->mapToGroups(function($item,$key){
+          //是否为祖先类
+          if(is_null($item->category->parent_id))
+          return [$item->category->name => $item];  //祖先类目姓名 =>父类目下的商品
+          else{
+            $ancestors = $item->category->ancestors;
+            $ancestor = $ancestors[0]->name;
+            return [$ancestor => $item];
+          }
+        });
+
+        //只取每个类目最近的前8条
+        $res->each(function($item,$key){
+          if(is_null($this->products)) $this->products = collect([$key => $item->sortByDesc('updated_at')->take(8)]);
+           else $this->products->put($key,$item->sortByDesc('updated_at')->take(8));
+        });
+        $keys = $this->products->keys();
+
         return view('products.home', [
             'products' => $this->products,
+            'keys'     => $keys,
         ]);
     }
 

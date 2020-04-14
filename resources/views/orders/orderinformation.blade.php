@@ -2,29 +2,25 @@
 @section('title','订单信息')
 
 @section('content')
-<link rel="stylesheet" href="{{ URL::asset('css/app.css') }}">
 <body class="account-login account res layout-1">
     <div id="wrapper" class="wrapper-fluid banners-effect-10">
-
     @include('layouts._headertemplate2')
-
 
       <!-- Main Container  -->
 <div class="main-container container">
   <ul class="breadcrumb">
     <li><a href="{{ route('root') }}"><i class="fa fa-home"></i></a></li>
-    <li><a href="">订单信息</a></li>
   </ul>
 
-<div id="app" class="{{ route_class() }}-page">
+<div id="app">
 <div class="container">
   <div class="row">
-  <div class="col-lg-10 offset-lg-1">
-  <div class="card">
+  <div class="col-lg-12">
+  <div class="panel panel-default">
     <div class="card-header">
-      <h4>订单详情</h4>
+      <h2 style="text-align:center;">订单详情</h2>
     </div>
-    <div class="card-body">
+    <div style="margin:5%;">
       <table class="table">
         <thead>
         <tr>
@@ -36,10 +32,10 @@
         </thead>
         @foreach($order->items as $index => $item)
           <tr>
-            <td class="product-info">
+            <td class="text-center">
               <div class="preview">
                 <a target="_blank" href="{{ route('products.show', [$item->product_id]) }}">
-                  <img src="{{ $item->product->image_url }}">
+                  <img style="" width="150" height="150" src="{{ $item->product->image_url }}">
                 </a>
               </div>
               <div>
@@ -51,7 +47,7 @@
             </td>
             <td class="sku-price text-center vertical-middle">￥{{ $item->price }}</td>
             <td class="sku-amount text-center vertical-middle">{{ $item->amount }}</td>
-            <td class="item-amount text-right vertical-middle">￥{{ number_format($item->price * $item->amount, 2, '.', '') }}</td>
+            <td class="item-amount text-right vertical-middle"><strong>￥{{ number_format($item->price * $item->amount, 2, '.', '') }}</strong></td>
           </tr>
         @endforeach
         <tr><td colspan="4"></td></tr>
