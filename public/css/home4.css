@@ -304,7 +304,7 @@ images@charset "UTF-8";
     background-color: #444; }
   .back-to-top i {
     font-size: 20px;
-    margin: 1px 0 0 0 !important;
+    margin: 10px 0 0 0 !important;
     color: #ddd;
     display: inline-block; }
   .back-to-top i:before {

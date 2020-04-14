@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Notifications\EmailVerificationNotification;
+use Mail;
 use Exception;
 use App\Exceptions\InvalidRequestException;
 use App\Models\User;
 use Cache;
+
 
 class EmailVerificationController extends Controller
 {
@@ -48,7 +50,7 @@ class EmailVerificationController extends Controller
         if ($user->email_verified) {
             throw new InvalidRequestException('你已经验证过邮箱了');
         }
-        // 调用 notify() 方法用来发送我们定义好的通知类
+        // 调用 notify() 方法用来发送定义好的通知类
         $user->notify(new EmailVerificationNotification());
 
         return view('pages.success', ['msg' => '邮件发送成功']);

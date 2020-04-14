@@ -22,6 +22,7 @@ class CheckIfEmailVerified
             }
             return redirect(route('email_verify_notice'));
         }
-        return $next($request);
+
+        return $next($request);//执行下一个中间件
     }
 }
