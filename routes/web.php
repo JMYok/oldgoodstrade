@@ -13,20 +13,17 @@
 
 Route::redirect('/', '/products')->name('root');
 
-Route::view('/test/home','pages/newpages/home');
-Route::view('/test/login','pages/newpages/login');
-Route::view('/test/address','pages/newpages/addressbook');
 Route::view('/test/orderinformation','pages/newpages/orderinformation');
-Route::view('/test/cart','pages/newpages/cart');
-Route::view('/test/productinfo','pages/newpages/productinfo');
 Route::view('/test/wishlist','pages/newpages/wishlist');
 
 
 
 
 
-/*商品主页*/
+
+/*商品主页\搜索页*/
 Route::get('products', 'ProductsController@index')->name('products.index');
+Route::get('s_products', 'ProductsController@search')->name('products.search');
 
 /*排行榜*/
 Route::get('rankingsale','RankController@sale')->name('rank.sale');
@@ -65,7 +62,7 @@ Route::group(['middleware' => 'auth'], function() {
         Route::post('orders', 'OrdersController@store')->name('orders.store');
         Route::get('orders', 'OrdersController@index')->name('orders.index');
         Route::get('orders/{order}', 'OrdersController@show')->name('orders.show');
-        //确实收货
+        //确认收货
         Route::post('orders/{order}/received', 'OrdersController@received')->name('orders.received');
         //订单支付宝付款
         Route::get('payment/{order}/alipay', 'PaymentController@payByAlipay')->name('payment.alipay');

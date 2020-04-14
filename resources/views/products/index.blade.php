@@ -26,7 +26,7 @@
          <!-- 最后展示出当前类目名称 -->
          <span class="category">{{ $category->name }}</span><span> ></span>
          <!-- 当前类目的 ID，当用户调整排序方式时，可以保证 category_id 参数不丢失 -->
-         <input type="hidden" name="category_id" value="{{ $category->id }}">
+         <input typeif()="hidden" name="category_id" value="{{ $category->id }}">
        @endif
        <!-- 面包屑结束 -->
 
