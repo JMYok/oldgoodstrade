@@ -223,8 +223,6 @@
 @section('content')
 <script type="text/javascript" src="{{ URL::asset('js/jquery-2.2.4.min.js') }}"></script>
 <script type="text/javascript" src="{{ URL::asset('js/app.js') }}"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script type="text/javascript">
 
  $(document).ready(function () {

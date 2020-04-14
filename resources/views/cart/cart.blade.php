@@ -149,7 +149,6 @@
 @section('content')
 <script type="text/javascript" src="{{ URL::asset('js/jquery-2.2.4.min.js') }}"></script>
 <script type="text/javascript" src="{{ URL::asset('js/app.js') }}"></script>
-<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script>
 $(document).ready(function () {
    // 监听 移除 按钮的点击事件

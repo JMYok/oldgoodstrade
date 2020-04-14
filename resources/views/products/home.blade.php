@@ -418,7 +418,7 @@
 										<div class="product-item-container">
 											<div class="left-block">
 											<div class="image product-image-container ">
-												<a class="lt-image" href="#" target="_self" title="{{ $product->title }}">
+												<a class="lt-image" href="{{ route('products.show', ['product' => $product->id]) }}" target="_self" title="{{ $product->title }}">
 												<img src="{{ $product->image_url }}" alt="Anantara Dhigu Resort &amp;amp; Spa, Maldives Hair Spa">
 												</a>
 											</div>
@@ -426,9 +426,11 @@
 											</div>
 											<div class="right-block">
 											<div class="caption">
-												<h4><a href="#" title="{{ $product->title }}" target="_self">{{ $product->title }}</a></h4>
+												<h4><a href="{{ route('products.show', ['product' => $product->id]) }}" title="{{ $product->title }}" target="_self">{{ $product->title }}</a></h4>
 												<div class="total-price clearfix">
-												<div class="price price-left"><span class="price-new">{{ $product->price }}</span><span class="price-old">{{ sprintf('%.02f',$product->price * 0.8) }}</span></div>
+												<div class="price price-left">
+                        <span class="price-new">{{ $product->price }}</span>
+                        <span class="price-old">{{ sprintf('%.02f',$product->price * 0.8) }}</span></div>
 												<div class="price-sale price-right"><span class="discount 123">-13%<strong>OFF</strong></span></div>
 												</div>
 											</div>
@@ -493,7 +495,7 @@
 										<div class="product-item-container">
 										<div class="left-block">
 											<div class="image product-image-container ">
-											<a class="lt-image" href="#" target="_self" title="Invisible Hidden Spy Earphone Micro Wireless">
+											<a class="lt-image" href="{{ route('products.show', ['product' => $product->id]) }}" target="_self" title="{{ $product->title }}">
 											<img width="270" height="270" src="{{ $product->image_url }}" alt="{{ $product->title }}">
 											</a>
 											</div>
