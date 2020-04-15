@@ -33,7 +33,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->singleton('alipay', function () {
             $config = config('pay.alipay');
             //服务器回调地址
-            $config['notify_url'] = 'http://requestbin.net/r/1ieo8c91';
+            $config['notify_url'] = 'http://101.200.131.88';
             //前端回调地址
             $config['return_url'] = route('payment.alipay.return');
             // 判断当前项目运行环境是否为线上环境
