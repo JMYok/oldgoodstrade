@@ -23,7 +23,7 @@ class ProductsController extends Controller
       $this->builder = Product::query()->where('on_sale', true);
     }
 
-    /* 主页各父类目所有商品 */
+    /* 主页各父类目商品 */
     public function index()
     {
         $data = $this->builder->get();
