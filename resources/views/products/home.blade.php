@@ -412,6 +412,7 @@
 							<!--Begin Items-->
 							<div class="ltabs-items ltabs-items-selected items-category-1" data-total="16">
 								<div class="ltabs-items-inner ltabs-slider">
+                @isset($products['电脑整机'])
                 @foreach( $products['电脑整机'] as $product)
 								<div class="ltabs-item">
 									<div class="item-inner product-layout transition product-grid">
@@ -453,6 +454,7 @@
 									</div>
 								</div>
 								@endforeach
+                @endisset
 								</div>
 							</div>
 
@@ -489,6 +491,7 @@
 							<div class="ltabs-items-container">
 								<div class="ltabs-items ltabs-items-selected items-category-4" data-total="16">
 								<div class="ltabs-items-inner ltabs-slider ">
+                  @isset($products['手机配件'])
                   @foreach($products['手机配件'] as $product)
 									<div class="ltabs-item">
 									<div class="item-inner product-layout transition product-grid">
@@ -531,6 +534,7 @@
 									</div>
 									</div>
                   @endforeach
+                  @endisset
 								</div>
 								</div>
 								<div class="ltabs-items  items-category-5 grid" data-total="16">
@@ -574,6 +578,7 @@
 							<div class="ltabs-items-container">
 								<div class="ltabs-items ltabs-items-selected items-category-4" data-total="16">
 									<div class="ltabs-items-inner ltabs-slider">
+                    @isset($products['电脑整机'])
                     @foreach( $products['电脑整机'] as $product)
 										<div class="ltabs-item">
 											<div class="item-inner product-layout transition product-grid">
@@ -625,6 +630,7 @@
 											</div>
 										</div>
                     @endforeach
+                    @endisset
 									</div>
 								</div>
 								<div class="ltabs-items  items-category-7 grid" data-total="16">
