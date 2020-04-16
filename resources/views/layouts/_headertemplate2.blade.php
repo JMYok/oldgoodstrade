@@ -61,6 +61,7 @@ li > a::before {
          								<li><a href="{{route('user_addresses.index')}}">收获地址</a></li>
          								<li><a href="{{ route('orders.index') }}">我的订单</a></li>
          								<li><a href="{{ route('products.favorites') }}">我的收藏</a></li>
+                        <li><a href="{{ route('cart.index') }}">我的购物车</a></li>
          								<li>
          										<a href="{{ route('logout') }}"
          												onclick="event.preventDefault();
@@ -103,7 +104,7 @@ li > a::before {
                                <div class="megamenu-pattern">
                                   <div class="container">
                                      <ul class="megamenu" data-transition="slide" data-animationtime="500">
-                                        <li class="full-width menu-home with-sub-menu hover">
+                                        <li class="full-width menu-home with-sub-menu">
                                            <a href="{{ route('root') }}" class="clearfix">
                                            <strong>
                                            主页

@@ -4,7 +4,9 @@ use Faker\Generator as Faker;
 
 $factory->define(App\Models\Product::class, function (Faker $faker) {
     $image = $faker->randomElement([
-        "earphone2.jpg"
+        "bluetooth.jpg",
+        "rentiantang1.jpg",
+        "touxiang1.jpg"
     ]);
     // 从数据库中随机取一个类目
    $category = \App\Models\Category::query()->where('is_directory', false)->inRandomOrder()->first();

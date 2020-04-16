@@ -65,15 +65,15 @@
         				<div class="product-view-inner clearfix">
         				   <div class="content-product-left  col-md-5 col-sm-6 col-xs-12">
         					  <div class="so-loadeding"></div>
-        					  <div class="large-image  class-honizol">
+        					  <div class="class-honizol">
         						 <div class="box-label">
         							<span class="label-product label-sale">
         							-30%
         							</span>
         						 </div>
-        						 <img class="product-image-zoom" src="{{ $product->image_url }}" data-zoom-image="image/catalog/demo/product/travel/2.jpg" title="Canada Travel One or Two European Facials at  Studio" alt="Canada Travel One or Two European Facials at  Studio">
+        						 <img class="product-image-zoom" src="{{ $product->image_url }}"  title="{{ $product->title }}">
         					  </div>
-        					  <div id="thumb-slider" class="full_slider category-slider-inner products-list yt-content-slider" data-rtl="no" data-autoplay="no" data-pagination="no" data-delay="4" data-speed="0.6" data-margin="10" data-items_column0="3" data-items_column1="3" data-items_column2="3" data-items_column3="3" data-items_column4="2" data-arrows="yes" data-lazyload="yes" data-loop="no" data-hoverpause="yes">
+        					  <!-- <div id="thumb-slider" class="full_slider category-slider-inner products-list yt-content-slider" data-rtl="no" data-autoplay="no" data-pagination="no" data-delay="4" data-speed="0.6" data-margin="10" data-items_column0="3" data-items_column1="3" data-items_column2="3" data-items_column3="3" data-items_column4="2" data-arrows="yes" data-lazyload="yes" data-loop="no" data-hoverpause="yes">
         							   <div class="owl2-item " >
         								  <div class="image-additional">
         									 <a data-index="0" class="img thumbnail" data-image="{{ $product->image_url }}" title="{{ $product->title }}">
@@ -95,7 +95,7 @@
         									 </a>
         								  </div>
         							   </div>
-        					  </div>
+        					  </div> -->
         				   </div>
         				   <div class="content-product-right col-md-7 col-sm-6 col-xs-12">
         					  <div class="title-product">
@@ -143,7 +143,7 @@
         					  <div id="product">
         						 <div class="box-cart clearfix">
         							<div class="form-group box-info-product">
-                          <label for="quantity" ><span><strong>数量</strong></span></label>
+                          <label style="font-size=14px !important;" for="quantity" ><span>数量</span></label>
         							   <div class="option quantity">
         								  <div class="input-group quantity-control" unselectable="on" style="user-select: none;">
         									 <input class="form-control" type="text" name="cart_amount" id="quantity" value="1">
@@ -221,10 +221,9 @@
 	<div class="back-to-top"><i class="fa fa-angle-up"></i></div>
 </body>
 @section('content')
-<script type="text/javascript" src="{{ URL::asset('js/jquery-2.2.4.min.js') }}"></script>
 <script type="text/javascript" src="{{ URL::asset('js/app.js') }}"></script>
-<script type="text/javascript">
 
+<script>
  $(document).ready(function () {
     // $('[data-toggle="tooltip"]').tooltip({trigger: 'hover'});
      $('.sku-btn').click(function () {

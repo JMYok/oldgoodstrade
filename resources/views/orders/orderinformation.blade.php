@@ -54,17 +54,17 @@
       </table>
       <div class="order-bottom">
         <div class="order-info">
-          <div class="line"><div class="line-label">收货地址：</div><div class="line-value">{{ join(' ', $order->address) }}</div></div>
-          <div class="line"><div class="line-label">订单备注：</div><div class="line-value">{{ $order->remark ?: '-' }}</div></div>
-          <div class="line"><div class="line-label">订单编号：</div><div class="line-value">{{ $order->no }}</div></div>
+          <div class="line"><div class="line-label"><strong>收货地址：</strong></div><div class="line-value">{{ join(' ', $order->address) }}</div></div>
+          <div class="line"><div class="line-label"><strong>订单备注：</strong></div><div class="line-value">{{ $order->remark ?: '-' }}</div></div>
+          <div class="line"><div class="line-label"><strong>订单编号：</strong></div><div class="line-value">{{ $order->no }}</div></div>
         </div>
         <div class="order-summary text-right">
           <div class="total-amount">
-            <span>订单总价：</span>
+            <span><strong>订单总价：</strong></span>
             <div class="value">￥{{ $order->total_amount }}</div>
           </div>
           <div>
-            <span>订单状态：</span>
+            <span><strong>订单状态：</strong></span>
             <div class="value">
               @if($order->paid_at)
                 @if($order->refund_status === \App\Models\Order::REFUND_STATUS_PENDING)
@@ -81,7 +81,7 @@
           </div>
           @if(!$order->paid_at && !$order->closed)
           <div class="payment-buttons">
-            <a class="btn btn-primary btn-sm" href="{{ route('payment.alipay', ['order' => $order->id]) }}">支付宝支付</a>
+            <a class="btn btn-default" href="{{ route('payment.alipay', ['order' => $order->id]) }}">支付宝支付</a>
           </div>
           @endif
         </div>

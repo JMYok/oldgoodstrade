@@ -22,7 +22,7 @@ class Product extends Model
     protected static $imageFields = [
       'image' => [
           'width' => 270,
-          'height' => 290,
+          'height' => 270,
           'crop' => true,
       ]
     ];
