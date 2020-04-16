@@ -4,16 +4,29 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
+use QCod\ImageUp\HasImageUploads;
+
 
 class Product extends Model
 {
+    use HasImageUploads;
+
     protected $fillable = [
-                    'title','long_title','description', 'image', 'on_sale', 
+                    'title','long_title','description', 'image', 'on_sale',
                     'rating', 'sold_count', 'review_count', 'price'
     ];
     protected $casts = [//在数据表中提取出的值为0、1，所以进行转换
         'on_sale' => 'boolean', // on_sale 是一个布尔类型的字段
     ];
+
+    protected static $imageFields = [
+      'image' => [
+          'width' => 270,
+          'height' => 290,
+          'crop' => true,
+      ]
+    ];
+
     // 与商品SKU表关联
     public function skus()
     {
