@@ -492,8 +492,8 @@
 							<!--Begin Items-->
 							<div class="ltabs-items ltabs-items-selected items-category-1" data-total="16">
 								<div class="ltabs-items-inner ltabs-slider">
-                @isset($products['手机配件'])
-                @foreach( $products['手机配件'] as $product)
+                @isset($products['电脑配件'])
+                @foreach( $products['电脑配件'] as $product)
 								<div class="ltabs-item">
 									<div class="item-inner product-layout transition product-grid">
 										<div class="product-item-container">
@@ -565,8 +565,8 @@
 							<div class="ltabs-items-container">
 								<div class="ltabs-items ltabs-items-selected items-category-4" data-total="16">
 								<div class="ltabs-items-inner ltabs-slider ">
-                  @isset($products['电脑配件'])
-                  @foreach($products['电脑配件'] as $product)
+                  @isset($products['电脑整机'])
+                  @foreach($products['电脑整机'] as $product)
 									<div class="ltabs-item">
 									<div class="item-inner product-layout transition product-grid">
 										<div class="product-item-container">
@@ -646,8 +646,8 @@
 							<div class="ltabs-items-container">
 								<div class="ltabs-items ltabs-items-selected items-category-4" data-total="16">
 									<div class="ltabs-items-inner ltabs-slider">
-                    @isset($products['电脑整机'])
-                    @foreach( $products['电脑整机'] as $product)
+                    @isset($products['外设产品'])
+                    @foreach( $products['外设产品'] as $product)
 										<div class="ltabs-item">
 											<div class="item-inner product-layout transition product-grid">
 												<div class="product-item-container">
@@ -733,8 +733,8 @@
 								<!--Begin Items-->
 								<div class="ltabs-items ltabs-items-selected items-category-1" data-total="16">
 								<div class="ltabs-items-inner ltabs-slider ">
-                  @isset($products['手机通讯'])
-                  @foreach($products['手机通讯'] as $product)
+                  @isset($products['游戏设备'])
+                  @foreach($products['游戏设备'] as $product)
 									<div class="ltabs-item">
 									<div class="item-inner product-layout transition product-grid">
 										<div class="product-item-container">
