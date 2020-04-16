@@ -59,9 +59,7 @@
 	<div class="back-to-top"><i class="fa fa-angle-up"></i></div>
 </body>
 @endsection
-<script type="text/javascript" src="{{ URL::asset('js/jquery-2.2.4.min.js') }}"></script>
 <script type="text/javascript" src="{{ URL::asset('js/app.js') }}"></script>
-<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
 <script>
 $(document).ready(function () {

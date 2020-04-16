@@ -308,7 +308,7 @@
 								<div class="item-sub-cat">
 								<ul class="ltabs-tabs cf font-ct list-sub-cat">
 									<li class="ltabs-tab tab-sel" data-category-id="1" data-active-content=".items-category-1"> <span class="ltabs-tab-label">销量Top10</span> </li>
-									<li class="ltabs-tab " data-category-id="4" data-active-content=".items-category-4"> <span class="ltabs-tab-label">评分Top10</span> </li>
+									<!-- <li class="ltabs-tab " data-category-id="4" data-active-content=".items-category-4"> <span class="ltabs-tab-label">评分Top10</span> </li> -->
 								</ul>
 								</div>
 							</div>
@@ -367,12 +367,10 @@
 													<div class="button-group">
 														<div class="button-inner so-quickview">
 															<a class="lt-image hidden"
-																href="product.html" target="_self"
+																href="#" target="_self"
 																title="Bazem Carlo again is there anyone who loves oreos ">
 															</a>
-															<a class="btn-button btn-quickview quickview quickview_handler" href="quickview.html" title="Quick View" data-title="Quick View" data-fancybox-type="iframe"><i class="fa fa-search"></i></a>
-															<button class="wishlist btn-button" type="button" data-toggle="tooltip" title="Add to Wish List" onclick="wishlist.add('30');"><i class="fa fa-heart"></i></button>
-															<button class="addToCart btn-button" type="button" data-toggle="tooltip" title="Add to cart" onclick="cart.add('30');"> <span class="hidden">加入购物车</span></button>
+															<!-- <button class="btn-favor wishlist btn-button" type="button" data-toggle="tooltip" title="Add to Wish List"><i class="fa fa-heart"></i></button> -->
 														</div>
 													</div>
 												</div>
@@ -382,13 +380,95 @@
 										@endforeach
 								</div>
 							</div>
+							</div>
+							</div>
+						</div>
 
-							<div class="ltabs-items items-category-4 grid" data-total="10">
-								<div class="ltabs-loading"></div>
+            <div class="ltabs-wrap">
+							<div class="ltabs-tabs-container" data-delay="300" data-duration="600" data-effect="starwars" data-ajaxurl="" data-type_source="0" data-lg="4" data-md="3" data-sm="3" data-xs="2" data-margin="0">
+							<!--Begin Tabs-->
+							<div class="ltabs-tabs-wrap">
+								<span class="ltabs-tab-selected"></span>
+								<span class="ltabs-tab-arrow">▼</span>
+								<div class="item-sub-cat">
+								<ul class="ltabs-tabs cf font-ct list-sub-cat">
+									<li class="ltabs-tab tab-sel" data-category-id="1" data-active-content=".items-category-1"> <span class="ltabs-tab-label">评分Top10</span> </li>
+									<!-- <li class="ltabs-tab " data-category-id="4" data-active-content=".items-category-4"> <span class="ltabs-tab-label">评分Top10</span> </li> -->
+								</ul>
+								</div>
+							</div>
+							<!-- End Tabs-->
+							</div>
+
+							<div class="wap-listing-tabs  products-list grid">
+							<div class="ltabs-items-container">
+
+            	<!--Begin Items-->
+							<div class="ltabs-items ltabs-items-selected ltabs-items-loaded items-category-1" data-total="10">
+								<div class="ltabs-items-inner ltabs-slider">
+								@foreach($pointranks as $product)
+								<div class="ltabs-item ">
+										<div class="item-inner product-thumb transition product-layout">
+											<div class="product-item-container">
+												<div class="left-block">
+													<div class="image product-image-container ">
+														<a class="lt-image"
+															href="{{ route('products.show', ['product' => $product->id]) }}" target="_self"
+															title="{{$product->title}}">
+														<img width="270" height="270" src="{{ $product->image_url }}" alt="{{$product->title}}">
+														</a>
+													</div>
+													<div class="box-label">
+														<span class="label-product label-sale">No.{{ $loop->index + 1}}</span>
+													</div>
+												</div>
+												<div class="right-block">
+													<div class="caption">
+														<h4>
+															<a href="{{ route('products.show', ['product' => $product->id]) }}"
+																title="{{$product->title}}" target="_self">
+															{{ $product->title }}
+															</a>
+														</h4>
+														<div class="rating">
+															<span class="count">
+															{{ str_repeat('★', round($product->rating)) }}{{ str_repeat('☆', 5 - round($product->rating)) }}
+															</span>
+														</div>
+														<div class="total-price clearfix">
+															<div class="price price-left">
+																<span class="price-new">{{ $product->price }}</span>
+																<span class="price-old">{{ sprintf('%.2f',$product->price * 0.8) }}</span>
+															</div>
+
+															<div class="price-sale price-right">
+																<span class="discount 123">
+																{{ $product->sold_count }}
+																<strong>件！</strong>
+																</span>
+															</div>
+														</div>
+													</div>
+													<div class="button-group">
+														<div class="button-inner so-quickview">
+															<a class="lt-image hidden"
+																href="#" target="_self"
+																title="Bazem Carlo again is there anyone who loves oreos ">
+															</a>
+															<!-- <button class="btn-favor wishlist btn-button" type="button" data-toggle="tooltip" title="Add to Wish List" onclick="wishlist.add('30');"><i class="fa fa-heart"></i></button> -->
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										</div>
+										@endforeach
+								</div>
 							</div>
 							</div>
 							</div>
 						</div>
+
 						</div>
 					</div>
 					</div>
@@ -412,15 +492,15 @@
 							<!--Begin Items-->
 							<div class="ltabs-items ltabs-items-selected items-category-1" data-total="16">
 								<div class="ltabs-items-inner ltabs-slider">
-                @isset($products['电脑整机'])
-                @foreach( $products['电脑整机'] as $product)
+                @isset($products['手机配件'])
+                @foreach( $products['手机配件'] as $product)
 								<div class="ltabs-item">
 									<div class="item-inner product-layout transition product-grid">
 										<div class="product-item-container">
 											<div class="left-block">
 											<div class="image product-image-container ">
 												<a class="lt-image" href="{{ route('products.show', ['product' => $product->id]) }}" target="_self" title="{{ $product->title }}">
-												<img src="{{ $product->image_url }}" alt="Anantara Dhigu Resort &amp;amp; Spa, Maldives Hair Spa">
+												<img width="270" height="270" src="{{ $product->image_url }}" alt="{{ $product->title }}">
 												</a>
 											</div>
 											<div class="box-label"><span class="label-product label-sale">Sale</span></div>
@@ -437,16 +517,10 @@
 											</div>
 											<div class="button-group">
 												<div class="button-inner so-quickview">
-												<a class="lt-image hidden" href="product.html" target="_self" title="Anantara Dhigu Resort &amp;amp; Spa, Maldives Hair Spa"></a>
-												<a class="btn-button btn-quickview quickview quickview_handler" href="quickview.html" title="Quick View" data-title="Quick View" data-fancybox-type="iframe">
-												<i class="fa fa-search"></i>
-												</a>
-												<button class="wishlist btn-button" type="button" data-toggle="tooltip" title="" onclick="wishlist.add('114');" data-original-title="Add to Wish List">
+												<a class="lt-image hidden" href="#" target="_self" title="Anantara Dhigu Resort &amp;amp; Spa, Maldives Hair Spa"></a>
+												<!-- <button class="btn-favor wishlist btn-button" type="button" data-toggle="tooltip" title="" onclick="wishlist.add('114');" data-original-title="Add to Wish List">
 												<i class="fa fa-heart"></i>
-												</button>
-												<button class="addToCart btn-button" type="button" data-toggle="tooltip" title="" onclick="cart.add('114');" data-original-title="Add to cart">
-												<span class="hidden">加入购物车</span>
-												</button>
+												</button> -->
 												</div>
 											</div>
 											</div>
@@ -491,8 +565,8 @@
 							<div class="ltabs-items-container">
 								<div class="ltabs-items ltabs-items-selected items-category-4" data-total="16">
 								<div class="ltabs-items-inner ltabs-slider ">
-                  @isset($products['手机配件'])
-                  @foreach($products['手机配件'] as $product)
+                  @isset($products['电脑配件'])
+                  @foreach($products['电脑配件'] as $product)
 									<div class="ltabs-item">
 									<div class="item-inner product-layout transition product-grid">
 										<div class="product-item-container">
@@ -518,15 +592,9 @@
 											<div class="button-group">
 											<div class="button-inner so-quickview">
 												<a class="lt-image hidden" href="#" target="_self" title="Invisible Hidden Spy Earphone Micro Wireless"></a>
-												<a class="btn-button btn-quickview quickview quickview_handler" href="quickview.html" title="Quick View" data-title="Quick View" data-fancybox-type="iframe">
-												<i class="fa fa-search"></i>
-												</a>
-												<button class="wishlist btn-button" type="button" data-toggle="tooltip" title="" onclick="wishlist.add('28');" data-original-title="Add to Wish List">
+												<!-- <button class="btn-favor wishlist btn-button" type="button" data-toggle="tooltip" title="" onclick="wishlist.add('28');" data-original-title="Add to Wish List">
 												<i class="fa fa-heart"></i>
-												</button>
-												<button class="addToCart btn-button" type="button" data-toggle="tooltip" title="" onclick="cart.add('28');" data-original-title="Add to cart">
-												<span class="hidden">Add to cart</span>
-												</button>
+												</button> -->
 											</div>
 											</div>
 										</div>
@@ -585,8 +653,8 @@
 												<div class="product-item-container">
 												<div class="left-block">
 													<div class="image product-image-container ">
-													<a class="lt-image" href="#" target="_self" title="Bougainvilleas On Lombard Street, San Francisco, Tokyo">
-													<img src="{{ $product->image_url }}" alt="Bougainvilleas On Lombard Street, San Francisco, Tokyo">
+													<a class="lt-image" href="{{ route('products.show', ['product' => $product->id]) }}" target="_self" title="{{ $product->title }}">
+													<img width="270" height="270" src="{{ $product->image_url }}" alt="{{ $product->title }}">
 													</a>
 													</div>
 													<div class="box-label">
@@ -596,7 +664,7 @@
 												<div class="right-block">
 													<div class="caption">
 													<h4>
-														<a href="#" title="Bougainvilleas On Lombard Street, San Francisco, Tokyo" target="_self">{{ $product->title }}</a>
+														<a href="{{ route('products.show', ['product' => $product->id]) }}" title="Bougainvilleas On Lombard Street, San Francisco, Tokyo" target="_self">{{ $product->title }}</a>
 													</h4>
 													<div class="total-price clearfix">
 														<div class="price price-left">
@@ -604,25 +672,16 @@
 														<span class="price-old">{{ sprintf('%.02f',$product->price * 0.8) }}</span>
 														</div>
 														<div class="price-sale price-right">
-														<span class="discount 123">-11%<strong>OFF</strong></span>
+														<span class="discount 123">-20%<strong>OFF</strong></span>
 														</div>
 													</div>
 													</div>
 													<div class="button-group">
 													<div class="button-inner so-quickview">
 														<a class="lt-image hidden" href="#" target="_self" title="Bougainvilleas On Lombard Street, San Francisco, Tokyo"></a>
-														<a class="btn-button btn-quickview quickview quickview_handler" href="quickview.html" title="Quick View" data-title="Quick View" data-fancybox-type="iframe">
-														<i class="fa fa-search"></i>
-														</a>
-														<button class="wishlist btn-button" type="button" data-toggle="tooltip" title="" onclick="wishlist.add('28');" data-original-title="Add to Wish List">
+														<!-- <button class="btn-favor wishlist btn-button" type="button" data-toggle="tooltip" title="" onclick="wishlist.add('28');" data-original-title="Add to Wish List">
 														<i class="fa fa-heart"></i>
-														</button>
-														<button class="compare btn-button" type="button" data-toggle="tooltip" title="" onclick="compare.add('28');" data-original-title="Compare this Product">
-														<i class="fa fa-exchange"></i>
-														</button>
-														<button class="addToCart btn-button" type="button" data-toggle="tooltip" title="" onclick="cart.add('28');" data-original-title="Add to cart">
-														<span class="hidden">Add to cart</span>
-														</button>
+														</button> -->
 													</div>
 													</div>
 												</div>
@@ -652,6 +711,97 @@
 			</div>
 			</section>
 
+      <section id="box-link5" class="section-style">
+			<div class="container page-builder-ltr">
+				<div class="row row-style row_a5">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col_iunl  block block_8 title_neo5">
+					<div class="module so-listing-tabs-ltr home1-lt-style4 default-nav clearfix img-float home-lt1">
+					<div class="head-title font-ct">
+						<h2 class="modtitle">
+						<span>{{ $keys[3] }}</span>
+						</h2>
+					</div>
+					<div class="modcontent">
+						<div id="so_listing_tabs_4" class="so-listing-tabs first-load">
+						<div class="ltabs-wrap">
+							<div class="ltabs-tabs-container" data-delay="300" data-duration="600" data-effect="starwars" data-ajaxurl="" data-type_source="0" data-lg="4" data-md="3" data-sm="3" data-xs="2" data-margin="0">
+							<!--Begin Tabs-->
+							<!-- End Tabs-->
+							</div>
+							<div class="wap-listing-tabs products-list grid">
+							<div class="ltabs-items-container ">
+								<!--Begin Items-->
+								<div class="ltabs-items ltabs-items-selected items-category-1" data-total="16">
+								<div class="ltabs-items-inner ltabs-slider ">
+                  @isset($products['手机通讯'])
+                  @foreach($products['手机通讯'] as $product)
+									<div class="ltabs-item">
+									<div class="item-inner product-layout transition product-grid">
+										<div class="product-item-container">
+										<div class="left-block">
+											<div class="image product-image-container ">
+											<a class="lt-image" href="{{ route('products.show', ['product' => $product->id]) }}" target="_self" title="{{ $product->title }}">
+											<img width="270" height="270" src="{{ $product->image_url }}" alt="{{ $product->title }}">
+											</a>
+											</div>
+											<div class="box-label"><span class="label-product label-sale">Sale</span></div>
+										</div>
+										<div class="right-block">
+											<div class="caption">
+											<h4><a href="{{ route('products.show', ['product' => $product->id]) }}" title="{{ $product->title }}" target="_self">{{$product->title}}</a></h4>
+											<div class="total-price clearfix">
+												<div class="price price-left">
+                          <span class="price-new">{{ $product->price }}</span>
+                          <span class="price-old">{{ sprintf('%.02f',$product->price * 0.8) }}</span>
+                        </div>
+												<div class="price-sale price-right"><span class="discount 123">-20%<strong>OFF</strong></span></div>
+											</div>
+											</div>
+											<div class="button-group">
+											<div class="button-inner so-quickview">
+												<a class="lt-image hidden" href="#" target="_self" title="Anantara Dhigu Resort &amp;amp; Spa, Maldives Hair Spa"></a>
+												<!-- <button class="btn-favor wishlist btn-button" type="button" data-toggle="tooltip" title="" onclick="wishlist.add('114');" data-original-title="Add to Wish List">
+												<i class="fa fa-heart"></i>
+												</button> -->
+											</div>
+											</div>
+										</div>
+										</div>
+									</div>
+									</div>
+                  @endforeach
+                  @endisset
+								</div>
+								</div>
+								<div class="ltabs-items items-category-9 grid" data-total="16">
+								<div class="ltabs-loading"></div>
+								</div>
+								<div class="ltabs-items  items-category-10 grid" data-total="16">
+								<div class="ltabs-loading"></div>
+								</div>
+								<div class="row clearfix banner-tab">
+								<div class="col-lg-6 col-md-6 col-sm-6 banners">
+									<div>
+									<a href="#"><img src="{{URL::asset('images/catalog/demo/banners/home4/banner1.jpg')}}" alt="Image Client"></a>
+									</div>
+								</div>
+								<div class="col-lg-6 col-md-6 col-sm-6 banners">
+									<div>
+									<a href="#"><img src="{{URL::asset('images/catalog/demo/banners/home4/banner2.jpg')}}" alt="Image Client"></a>
+									</div>
+								</div>
+								</div>
+							</div>
+							</div>
+						</div>
+						</div>
+					</div>
+					</div>
+				</div>
+				</div>
+			</div>
+			</section>
+
 
 		</div>
 		</div>
@@ -662,3 +812,29 @@
 		============================================ -->
  @endsection
 	</body>
+  <!-- <script type="text/javascript" src="{{ URL::asset('js/app.js') }}"></script>
+
+  <script>
+  $(document).ready(function () {
+     // 监听收藏按钮的点击事件
+     $('.btn-favor').click(function () {
+       // 发起一个 post ajax 请求，请求 url 通过后端的 route() 函数生成。
+       axios.post('{{ route('products.favor', ['product' => $product->id]) }}')
+         .then(function () { // 请求成功会执行这个回调
+           swal('操作成功', '', 'success');
+         }, function(error) { // 请求失败会执行这个回调
+           // 如果返回码是 401 代表没登录
+           if (error.response && error.response.status === 401) {
+             swal('请先登录', '', 'error');
+           } else if (error.response && (error.response.data.msg || error.response.data.message)) {
+             // 其他有 msg 或者 message 字段的情况，将 msg 提示给用户
+             swal(error.response.data.msg ? error.response.data.msg : error.response.data.message, '', 'error');
+           }  else {
+             // 其他情况应该是系统挂了
+             swal('系统错误', '', 'error');
+           }
+         });
+     });
+ }); -->
+ </script>
+  </script>

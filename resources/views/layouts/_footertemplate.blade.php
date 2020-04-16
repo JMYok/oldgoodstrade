@@ -135,7 +135,7 @@
     </div>
     </div>
   </div>
-  <div class="container-fluid page-builder-ltr">
+  <!-- <div class="container-fluid page-builder-ltr">
     <div class="row row_mvtd  footer--center2  row-color ">
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col_6fdl  float_none container">
       <div class="row row_hwmc  ">
@@ -267,7 +267,7 @@
       </div>
     </div>
     </div>
-  </div>
+  </div> -->
   <div class="container-fluid page-builder-ltr">
     <div class="row row_qof8  footer--center3  row-color ">
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col_up4v  float_none ">

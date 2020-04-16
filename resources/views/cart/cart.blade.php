@@ -2,6 +2,46 @@
 @section('title','我的购物车')
 
 @section('content')
+<style>
+  span.fa.fa-caret-down{
+    background: none repeat scroll 0 0 #999;
+    font-size: 13px;
+    padding: 0 4px;
+    position: absolute;
+    top: 19px;
+    width: 15px;
+    height: 17px;
+    line-height: 15px;
+    border: 0 none;
+    color: white;
+    float: left;
+    font-size: 10px;
+    border-radius: 0;
+    cursor: pointer;
+    line-height: 16px;
+  }
+  span.fa.fa-caret-up{
+    background: none repeat scroll 0 0 #999;
+    font-size: 13px;
+    padding: 0 4px;
+    position: absolute;
+    top: 0px;
+    width: 15px;
+    height: 17px;
+    line-height: 15px;
+    border: 0 none;
+    color: white;
+    float: left;
+    font-size: 10px;
+    border-radius: 0;
+    cursor: pointer;
+    line-height: 16px;
+  }
+  span.fa:hover{
+    background: none repeat scroll 0 0 #ff5e00;
+  }
+
+</style>
 <body class="account-login account res layout-1">
     <div id="wrapper" class="wrapper-fluid banners-effect-10">
       @include('layouts._headertemplate2')
@@ -49,13 +89,15 @@
                 ￥{{ $item->productSku->price }}
               </td>
 
-              <td class="text-left"><div class="input-group btn-block" style="max-width: 200px;">
-                <input type="text" class="form-control form-control-sm amount" @if(!$item->productSku->product->on_sale) disabled @endif name="amount" value="{{ $item->amount }}" style="width:50%;">
-                <span class="input-group-addon product_quantity_down fa fa-caret-down"></span>
-                <span class="input-group-addon product_quantity_up fa fa-caret-up"></span>
+              <td class="text-left">
+                <div class="input-group btn-block" style="max-width: 200px;">
+                <input type="text"  id="quantity" class="form-control form-control-sm amount" @if(!$item->productSku->product->on_sale) disabled @endif name="amount" value="{{ $item->amount }}" style="width:50%;">
+                <span class="fa fa-caret-up"></span>
+                <span class="fa fa-caret-down"></span>
                 <span class="input-group-btn">
                 <button type="button" data-toggle="tooltip" title="" class="btn btn-danger btn-remove"><i class="fa fa-times-circle"></i></button>
-                </span></div>
+                </span>
+                </div>
               </td>
 
               <td class="text-right">￥{{ sprintf('%.2f',$item->productSku->price * $item->amount) }}</td>
@@ -96,9 +138,11 @@
           <div class="panel-body">
             <label class="col-sm-2 control-label" for="input-coupon">输入优惠码</label>
             <div class="input-group">
-              <input type="text" name="coupon"  id="input-coupon" class="form-control">
+              <input type="text" name="coupon_code"  class="form-control">
+              <span class="form-text text-muted" id="coupon_desc"></span>
               <span class="input-group-btn">
-                <input type="button" value="使用优惠码" id="button-coupon" data-loading-text="Loading..." class="btn btn-primary">
+                <button type="button" class="btn btn-success" id="btn-check-coupon">使用优惠券</button>
+                <button type="button" class="btn btn-danger" style="display: none;" id="btn-cancel-coupon">取消
               </span>
             </div>
           </div>
@@ -134,7 +178,7 @@
 
       <div class="buttons clearfix">
         <div class="pull-left"><a href="{{ route('root') }}" class="btn btn-default">继续购物</a></div>
-        <div class="pull-right"><button class="btn btn-primary btn-create-order">提交订单</button></div>
+        <div class="pull-right"><button class="btn btn-default btn-create-order">提交订单</button></div>
       </div>
     </div>
 
@@ -147,10 +191,22 @@
 	<div class="back-to-top"><i class="fa fa-angle-up"></i></div>
 </body>
 @section('content')
-<script type="text/javascript" src="{{ URL::asset('js/jquery-2.2.4.min.js') }}"></script>
 <script type="text/javascript" src="{{ URL::asset('js/app.js') }}"></script>
 <script>
 $(document).ready(function () {
+    //监听增加减少数量按钮
+    var $value = $('input#quantity');
+    $('span.fa.fa-caret-down').click(function () {
+          var val = parseInt($value.val()) - 1;
+          $value.val(val > 0 ? val : 1);
+          return false
+      });
+    $('span.fa.fa-caret-up').click(function () {
+          var val = parseInt($value.val()) + 1;
+          $value.val(val <999 ? val : 1);
+          return false
+      });
+
    // 监听 移除 按钮的点击事件
    $('.btn-remove').click(function () {
      // $(this) 可以获取到当前点击的 移除 按钮的 jQuery 对象
@@ -195,6 +251,7 @@ $(document).ready(function () {
        address_id: $('#order-form').find('select[name=address]').val(),
        items: [],
        remark: $('#order-form').find('textarea[name=remark]').val(),
+       coupon_code: $('input[name=coupon_code]').val(), // 从优惠码输入框中获取优惠码
      };
      // 遍历 <table> 标签内所有带有 data-id 属性的 <tr> 标签，也就是每一个购物车中的商品 SKU
      $('table tr[data-id]').each(function () {
@@ -240,6 +297,44 @@ $(document).ready(function () {
        });
    });
 
+
+    // 优惠券按钮点击事件
+      $('#btn-check-coupon').click(function () {
+        // 获取用户输入的优惠码
+        var code = $('input[name=coupon_code]').val();
+        // 如果没有输入则弹框提示
+        if(!code) {
+          swal('请输入优惠码', '', 'warning');
+          return;
+        }
+        // 调用检查接口
+        axios.get('/coupon_codes/' + encodeURIComponent(code))
+          .then(function (response) {  // then 方法的第一个参数是回调，请求成功时会被调用
+            $('#coupon_desc').text(response.data.description); // 输出优惠信息
+            $('input[name=coupon_code]').prop('readonly', true); // 禁用输入框
+            $('#btn-cancel-coupon').show(); // 显示 取消 按钮
+            $('#btn-check-coupon').hide(); // 隐藏 检查 按钮
+          }, function (error) {
+            // 如果返回码是 404，说明优惠券不存在
+            if(error.response.status === 404) {
+              swal('优惠码不存在', '', 'error');
+            } else if (error.response.status === 403) {
+            // 如果返回码是 403，说明有其他条件不满足
+              swal(error.response.data.msg, '', 'error');
+            } else {
+            // 其他错误
+              swal('系统内部错误', '', 'error');
+            }
+          })
+      });
+
+      // 隐藏 按钮点击事件
+      $('#btn-cancel-coupon').click(function () {
+        $('#coupon_desc').text(''); // 隐藏优惠信息
+        $('input[name=coupon_code]').prop('readonly', false);  // 启用输入框
+        $('#btn-cancel-coupon').hide(); // 隐藏 取消 按钮
+        $('#btn-check-coupon').show(); // 显示 检查 按钮
+      });
  });
 
 </script>

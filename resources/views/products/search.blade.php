@@ -34,7 +34,7 @@
 								<div class="col-sm-2 view-mode hidden-sm hidden-xs">
 									<div class="list-view">
 										<button class="btn btn-default grid active" data-view="grid" data-toggle="tooltip"  data-original-title="Grid"><i class="fa fa-th"></i></button>
-                    <button class="btn btn-default list" data-view="list" data-toggle="tooltip" data-original-title="List"><i class="fa fa-th-list"></i></button>
+                    <!-- <button class="btn btn-default list" data-view="list" data-toggle="tooltip" data-original-title="List"><i class="fa fa-th-list"></i></button> -->
 									</div>
 								</div>
 
@@ -77,7 +77,7 @@
 								<div class="product-item-container" style="height:80% !important;">
 									<div class="left-block">
 										<div class="product-image-container second_img  ">
-											<a href="#" title="Compact Portable Charger (Power Bank) with Premium ">
+											<a href="{{ route('products.show', ['product' => $product->id]) }}" title="Compact Portable Charger (Power Bank) with Premium ">
 												<img src="{{ $product->image_url }}" alt="{{ $product->description }}" title="{{ $product->title }}" class="img-1 img-responsive">
 												<img src="{{ $product->image_url }}" alt="{{ $product->description }}" title="{{ $product->title }}" class="img-2 img-responsive">
 											</a>
@@ -90,25 +90,20 @@
 									</div>
 									<div class="right-block">
 										<div class="caption">
-											<h4><a href="#">{{ $product->title }}</a></h4>
+											<h4><a href="{{ route('products.show', ['product' => $product->id]) }}">{{ $product->title }}</a></h4>
 											<div class="total-price">
 												<div class="price price-left">
 													<span class="price-new">{{ $product->price }}</span><span class="price-old">{{ sprintf('%.2f',$product->price * 0.8) }}</span>
 												</div>
 											</div>
 
-											<div class="list-block hidden">
-												<button class="addToCart" type="button" data-toggle="tooltip" title="" onclick="cart.add('30 ', '1 ');" data-original-title="Add to Cart "><span>Add to Cart </span></button>
+											<!-- <div class="list-block hidden">
 												<button class="wishlist btn-button" type="button" data-toggle="tooltip" title="" onclick="wishlist.add('30 ');" data-original-title="Add to Wish List "><i class="fa fa-heart-o"></i></button>
-												<button class="compare btn-button" type="button" data-toggle="tooltip" title="" onclick="compare.add('30 ');" data-original-title="Compare this Product "><i class="fa fa-retweet"></i></button>
-											</div>
+											</div> -->
 										</div>
-										<div class="button-group">
-											<a class="quickview iframe-link visible-lg btn-button" data-fancybox-type="iframe" href="quickview.html"> <i class="fa fa-search"></i> </a>
+										<!-- <div class="button-group">
 											<button class="wishlist btn-button" type="button" data-toggle="tooltip" title="" onclick="wishlist.add('66');" data-original-title="Add to Wish List"><i class="fa fa-heart-o"></i></button>
-											<button class="compare btn-button" type="button" data-toggle="tooltip" title="" onclick="compare.add('66');" data-original-title="Compare this Product"><i class="fa fa-retweet"></i></button>
-											<button class="addToCart btn-button" type="button" data-toggle="tooltip" title="" onclick="cart.add('66', '1');" data-original-title="Add to Cart"><span class="hidden">Add to Cart </span></button>
-										</div>
+										</div> -->
 									</div>
 
 								</div>

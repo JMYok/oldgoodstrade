@@ -16,6 +16,6 @@ class RankController extends Controller
 
     public function point(){
     	$pointrank = Product::where('on_sale', true)->where('rating','!=',0)->orderBy('rating','desc')->take(10)->get();
-    	return $pointrank;
+    	return view('products.home',['pointrank'=>$pointranks]);;
     }
 }
