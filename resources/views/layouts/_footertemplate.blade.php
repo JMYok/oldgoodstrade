@@ -5,7 +5,7 @@
   <div class="container-fluid page-builder-ltr">
     <div class="row row_z1do  footer--center  row-color ">
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col_x6fe  float_none container">
-      <div class="row row_wprs  ">
+      <!-- <div class="row row_wprs  ">
       <div class="col-lg-15 col-md-15 col-sm-4 col-xs-6 col_yb5e footer--link">
         <h3 class="title-footer">
         spa & massage
@@ -131,7 +131,7 @@
         </li>
         </ul>
       </div>
-      </div>
+      </div> -->
     </div>
     </div>
   </div>
@@ -274,20 +274,20 @@
       <div class="row row_fymn  ">
       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col_1yf0">
         <div class="contactinfo">
-        <h4 class="title-footer">Our Contact</h4>
+        <h4 class="title-footer">我们的联系方式</h4>
         <p>They key is to have every key, the key to open every door. We will never see them</p>
         <div class="content-footer">
           <div class="address">
           <label><i class="fa fa-map-marker" aria-hidden="true"></i></label>
-          <span>100 S Manhattan St, Amarillo, TX 79104, North America</span>
+          <span>100 S Manhattan St, Amarillo, TX 610500, 中国</span>
           </div>
           <div class="phone">
           <label><i class="fa fa-phone" aria-hidden="true"></i></label>
-          <span>( +123 )4 567 890  -  ( +123 )4 567 899</span>
+          <span>( +123 )1 567 890  -  ( +123 )5 567 899</span>
           </div>
           <div class="email">
           <label><i class="fa fa-envelope"></i></label>
-          <a href="#">Contact@TopDeals.Com</a>
+          <a href="#">Contact@oldTreasures.Com</a>
           </div>
         </div>
         </div>
@@ -315,7 +315,7 @@
   <div class="container">
   <div class="row">
     <div class="col-md-7  col-sm-7 copyright">
-    So TopDeal © 2016 - 2018. All Rights Reserved. Designed by <a href="#" target="_blank">OpenCartWorks.Com</a>
+    So oldTreasures © 2016 - 2018. All Rights Reserved. Designed by <a href="#" target="_blank">oldTreasures.Com</a>
     </div>
     <div class="col-md-5 col-sm-5 paymen">
     <img src="{{URL::asset('images/catalog/demo/payment/payment.png')}}" alt="imgpayment">

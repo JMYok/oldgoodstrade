@@ -61,7 +61,7 @@
 			<div class="container">
 				<div class="row">
 					<div class="navbar-logo col-lg-3 col-md-12 col-xs-12">
-								<a href="{{ route('root') }}"><img src="{{URL::asset('images/catalog/demo/logo/logo4.png')}}" title="Your Old treasures Home" alt="Your Old treasures Home"></a>
+								<a href="{{ route('root') }}"><img src="{{URL::asset('images/logo1.jpg')}}" title="Your Old treasures Home" alt="Your Old treasures Home"></a>
 					</div>
 							<div class="header-center-right col-lg-6 col-md-8 col-sm-8 col-xs-9">
 								<div class="header_search">
@@ -273,7 +273,7 @@
 					<div class="home4-banner-1 row clearfix ">
 						<div class="item-1 col-lg-4 col-md-4 col-sm-4 col-xs-6 mrb-30 banners">
 							<div>
-								<a title="Static Image" href="#"><img src="{{URL::asset('images/catalog/demo/banners/home4/banner4-1.jpg')}}" alt="Static Image"></a>
+								<a  id="coupon" title="Static Image"><img src="{{URL::asset('images/coupon1.png')}}" alt="coupon Image"></a>
 							</div>
 						</div>
 						<div class="item-2 col-lg-4 col-md-4 col-sm-4 col-xs-6 mrb-30 banners">
@@ -531,7 +531,6 @@
                 @endisset
 								</div>
 							</div>
-
 
 							</div>
 						</div>
@@ -812,29 +811,39 @@
 		============================================ -->
  @endsection
 	</body>
-  <!-- <script type="text/javascript" src="{{ URL::asset('js/app.js') }}"></script>
+<script type="text/javascript" src="{{ URL::asset('js/app.js') }}">
+</script>
+<script type="text/javascript" src="{{ URL::asset('js/bootstrap.min.js') }}"></script>
 
-  <script>
+<script>
   $(document).ready(function () {
      // 监听收藏按钮的点击事件
-     $('.btn-favor').click(function () {
-       // 发起一个 post ajax 请求，请求 url 通过后端的 route() 函数生成。
-       axios.post('{{ route('products.favor', ['product' => $product->id]) }}')
-         .then(function () { // 请求成功会执行这个回调
-           swal('操作成功', '', 'success');
-         }, function(error) { // 请求失败会执行这个回调
-           // 如果返回码是 401 代表没登录
-           if (error.response && error.response.status === 401) {
-             swal('请先登录', '', 'error');
-           } else if (error.response && (error.response.data.msg || error.response.data.message)) {
-             // 其他有 msg 或者 message 字段的情况，将 msg 提示给用户
-             swal(error.response.data.msg ? error.response.data.msg : error.response.data.message, '', 'error');
-           }  else {
-             // 其他情况应该是系统挂了
-             swal('系统错误', '', 'error');
-           }
-         });
+     // $('.btn-favor').click(function () {
+     //   // 发起一个 post ajax 请求，请求 url 通过后端的 route() 函数生成。
+     //   axios.post('{{ route('products.favor', ['product' => $product->id]) }}')
+     //     .then(function () { // 请求成功会执行这个回调
+     //       swal('操作成功', '', 'success');
+     //     }, function(error) { // 请求失败会执行这个回调
+     //       // 如果返回码是 401 代表没登录
+     //       if (error.response && error.response.status === 401) {
+     //         swal('请先登录', '', 'error');
+     //       } else if (error.response && (error.response.data.msg || error.response.data.message)) {
+     //         // 其他有 msg 或者 message 字段的情况，将 msg 提示给用户
+     //         swal(error.response.data.msg ? error.response.data.msg : error.response.data.message, '', 'error');
+     //       }  else {
+     //         // 其他情况应该是系统挂了
+     //         swal('系统错误', '', 'error');
+     //       }
+     //     });
+     // });
+
+     $('a#coupon').click(function(){
+       swal({
+         title: "有效优惠券码:ABC",
+         icon: "success",
+         buttons: ['确定'],
+       })
      });
- }); -->
+ });
  </script>
   </script>
