@@ -83,10 +83,6 @@
 											</a>
 										</div>
 
-                    <div class="description item-desc">
-                      <p>{{ $product->description }}</p>
-                    </div>
-
 									</div>
 									<div class="right-block">
 										<div class="caption">
