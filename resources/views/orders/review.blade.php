@@ -2,6 +2,88 @@
 @section('title', '商品评价')
 
 @section('content')
+<style>
+  .product-info{
+    display: flex;
+   flex-direction: row;
+  }
+  .product-info.preview{
+      border: 1px solid #eee;
+      margin-right: 5px;
+  }
+  .product-title, .sku-title {
+      display: block;
+    }
+    .product-title > a {
+       color: #3c3c3c;
+     }
+     span.sku-title {
+       color: #9e9e9e;
+     }
+
+     .rating-star-yes {
+       color: gold;
+       font-size: 150%;
+     }
+
+      .rating-star-no {
+        color: lightgrey;
+        font-size: 150%;
+      }
+
+      .rate-area {
+        float: left;
+        border-style: none;
+        margin: 0 auto;
+        padding: 0;
+      }
+
+      .rate-area:not(:checked) > input {
+        position: absolute;
+        top: -9999px;
+        clip: rect(0, 0, 0, 0);
+      }
+
+      .rate-area:not(:checked) > label {
+        float: right;
+        width: 1em;
+        overflow: hidden;
+        white-space: nowrap;
+        cursor: pointer;
+        line-height: 1.2;
+        color: lightgrey;
+        font-size: 150%;
+      }
+
+      .rate-area:not(:checked) > label:before {
+        content: '\2605   ';
+      }
+
+      rate-area:not(:checked) > label:hover,
+      .rate-area:not(:checked) > label:hover ~ label{
+          color: gold;
+      }
+
+      .rate-area > input:checked ~ label {
+        color: gold;
+      }
+
+      .rate-area > label:active {
+        position: relative;
+        top: 2px;
+        left: 2px;
+      }
+
+      .rate-area > input:checked + label:hover,
+     .rate-area > input:checked + label:hover ~ label,
+      .rate-area > input:checked ~ label:hover,
+      .rate-area > input:checked ~ label:hover ~ label,
+      .rate-area > label:hover ~ input:checked ~ label {
+       color: gold;
+     }
+
+
+</style>
 <body class="account-login account res layout-1">
     <div id="wrapper content" class="wrapper-fluid banners-effect-10">
     @include('layouts._headertemplate2')
@@ -9,7 +91,7 @@
     <div class="col-lg-10 col-lg-offset-1">
     <div class="panel panel-default">
       <div class="panel-heading">
-        商品评价
+        <strong>商品评价</strong>
         <a class="pull-right" href="{{ route('orders.index') }}">返回订单列表</a>
       </div>
       <div class="panel-body">
@@ -18,16 +100,16 @@
         <table class="table">
           <tbody>
           <tr>
-            <td>商品名称</td>
-            <td>打分</td>
-            <td>评价</td>
+            <td><strong>商品名称</strong></td>
+            <td><strong>打分</strong></td>
+            <td><strong>评价</strong></td>
           </tr>
           @foreach($order->items as $index => $item)
           <tr>
             <td class="product-info">
               <div class="preview">
                 <a target="_blank" href="{{ route('products.show', [$item->product_id]) }}">
-                  <img src="{{ $item->product->image_url }}">
+                  <img width="100" height="100" src="{{ $item->product->image_url }}">
                 </a>
               </div>
               <div>
