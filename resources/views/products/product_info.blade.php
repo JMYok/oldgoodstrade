@@ -252,8 +252,8 @@
     // $('[data-toggle="tooltip"]').tooltip({trigger: 'hover'});
      $('.sku-btn').click(function () {
        var price = $(this).data('price');
-       $('.price-new').text(price);
-       $('.price-old').text((price*0.8).toFixed(2));
+       $('.price-new').text((price*0.8).toFixed(2));
+       $('.price-old').text(price);
        $('.stock').text('库存：' + $(this).data('stock') + '件');
      });
 

@@ -43,6 +43,7 @@ class ProductsController extends Controller
           if(is_null($this->products)) $this->products = collect([$key => $item->sortByDesc('updated_at')->take(8)]);
            else $this->products->put($key,$item->sortByDesc('updated_at')->take(8));
         });
+
         $keys = $this->products->keys();
 
         return view('products.home', [

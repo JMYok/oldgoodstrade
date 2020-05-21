@@ -88,7 +88,8 @@
 											<h4><a href="{{ route('products.show', ['product' => $product->id]) }}">{{ $product->title }}</a></h4>
 											<div class="total-price">
 												<div class="price price-left">
-													<span class="price-new">{{ sprintf('%.2f',$product->price * 0.8) }}</span><span class="price-old">{{ $product->price }}</span>
+													<span class="price-new">{{ sprintf('%.2f',$product->price * 0.8) }}</span>
+                          <span class="price-old">{{ $product->price }}</span>
 												</div>
 											</div>
 

@@ -352,8 +352,8 @@
 														</div>
 														<div class="total-price clearfix">
 															<div class="price price-left">
-																<span class="price-new">{{ $product->price }}</span>
-																<span class="price-old">{{ sprintf('%.2f',$product->price * 0.8) }}</span>
+																<span class="price-new">{{ sprintf('%.2f',$product->price * 0.8) }}</span>
+																<span class="price-old">{{ $product->price }}</span>
 															</div>
 
 															<div class="price-sale price-right">
@@ -437,8 +437,8 @@
 														</div>
 														<div class="total-price clearfix">
 															<div class="price price-left">
-																<span class="price-new">{{ $product->price }}</span>
-																<span class="price-old">{{ sprintf('%.2f',$product->price * 0.8) }}</span>
+																<span class="price-new">{{ sprintf('%.2f',$product->price * 0.8) }}</span>
+																<span class="price-old">{{ $product->price }}</span>
 															</div>
 
 															<div class="price-sale price-right">
@@ -493,7 +493,7 @@
 							<div class="ltabs-items ltabs-items-selected items-category-1" data-total="16">
 								<div class="ltabs-items-inner ltabs-slider">
                 @isset($products['电脑配件'])
-                @foreach( $products['电脑配件'] as $product)
+                @foreach( $products['电脑整机'] as $product)
 								<div class="ltabs-item">
 									<div class="item-inner product-layout transition product-grid">
 										<div class="product-item-container">
@@ -510,9 +510,9 @@
 												<h4><a href="{{ route('products.show', ['product' => $product->id]) }}" title="{{ $product->title }}" target="_self">{{ $product->title }}</a></h4>
 												<div class="total-price clearfix">
 												<div class="price price-left">
-                        <span class="price-new">{{ $product->price }}</span>
-                        <span class="price-old">{{ sprintf('%.02f',$product->price * 0.8) }}</span></div>
-												<div class="price-sale price-right"><span class="discount 123">-13%<strong>OFF</strong></span></div>
+                        <span class="price-new">{{ sprintf('%.02f',$product->price * 0.8) }}</span>
+                        <span class="price-old">{{ $product->price }}</span></div>
+												<div class="price-sale price-right"><span class="discount 123">-20%<strong>OFF</strong></span></div>
 												</div>
 											</div>
 											<div class="button-group">
@@ -542,13 +542,87 @@
 			</div>
 			</section>
 
+      <section id="box-link5" class="section-style">
+			<div class="container page-builder-ltr">
+				<div class="row row-style row_a5">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col_iunl  block block_8 title_neo5">
+					<div class="module so-listing-tabs-ltr home1-lt-style4 default-nav clearfix img-float home-lt1">
+					<div class="head-title font-ct">
+						<h2 class="modtitle">
+						<span>{{ $keys[1] }}</span>
+						</h2>
+					</div>
+					<div class="modcontent">
+						<div id="so_listing_tabs_4" class="so-listing-tabs first-load">
+						<div class="ltabs-wrap">
+							<div class="ltabs-tabs-container" data-delay="300" data-duration="600" data-effect="starwars" data-ajaxurl="" data-type_source="0" data-lg="4" data-md="3" data-sm="3" data-xs="2" data-margin="0">
+							<!--Begin Tabs-->
+							<!-- End Tabs-->
+							</div>
+							<div class="wap-listing-tabs products-list grid">
+							<div class="ltabs-items-container ">
+								<!--Begin Items-->
+								<div class="ltabs-items ltabs-items-selected items-category-1" data-total="16">
+								<div class="ltabs-items-inner ltabs-slider ">
+                  @isset($products['电脑整机'])
+                  @foreach($products['电脑整机'] as $product)
+									<div class="ltabs-item">
+									<div class="item-inner product-layout transition product-grid">
+										<div class="product-item-container">
+										<div class="left-block">
+											<div class="image product-image-container ">
+											<a class="lt-image" href="{{ route('products.show', ['product' => $product->id]) }}" target="_self" title="{{ $product->title }}">
+											<img width="270" height="270" src="{{ $product->image_url }}" alt="{{ $product->title }}">
+											</a>
+											</div>
+											<div class="box-label"><span class="label-product label-sale">Sale</span></div>
+										</div>
+										<div class="right-block">
+											<div class="caption">
+											<h4><a href="{{ route('products.show', ['product' => $product->id]) }}" title="{{ $product->title }}" target="_self">{{$product->title}}</a></h4>
+											<div class="total-price clearfix">
+												<div class="price price-left">
+                          <span class="price-new">{{ sprintf('%.02f',$product->price * 0.8) }}</span>
+                          <span class="price-old">{{ $product->price }}</span>
+                        </div>
+												<div class="price-sale price-right"><span class="discount 123">-20%<strong>OFF</strong></span></div>
+											</div>
+											</div>
+											<div class="button-group">
+											<div class="button-inner so-quickview">
+												<a class="lt-image hidden" href="#" target="_self" title="Anantara Dhigu Resort &amp;amp; Spa, Maldives Hair Spa"></a>
+												<!-- <button class="btn-favor wishlist btn-button" type="button" data-toggle="tooltip" title="" onclick="wishlist.add('114');" data-original-title="Add to Wish List">
+												<i class="fa fa-heart"></i>
+												</button> -->
+											</div>
+											</div>
+										</div>
+										</div>
+									</div>
+									</div>
+                  @endforeach
+                  @endisset
+								</div>
+								</div>
+							</div>
+							</div>
+						</div>
+						</div>
+					</div>
+					</div>
+				</div>
+				</div>
+			</div>
+			</section>
+
+
       <section id="box-link3" class="section-style">
 			<div class="container page-builder-ltr">
 				<div class="row row-style row_a3">
 				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col_nvxr  block block_6 title_neo3">
 					<div class="module so-listing-tabs-ltr home1-lt-style2 default-nav clearfix img-float home-lt1">
 					<div class="head-title font-ct">
-						<h2 class="modtitle">{{ $keys[1] }}</h2>
+						<h2 class="modtitle">{{ $keys[2] }}</h2>
 					</div>
 					<div class="modcontent">
 						<div id="so_listing_tabs_2" class="so-listing-tabs first-load">
@@ -564,8 +638,8 @@
 							<div class="ltabs-items-container">
 								<div class="ltabs-items ltabs-items-selected items-category-4" data-total="16">
 								<div class="ltabs-items-inner ltabs-slider ">
-                  @isset($products['电脑整机'])
-                  @foreach($products['电脑整机'] as $product)
+                  @isset($products['外设产品'])
+                  @foreach($products['外设产品'] as $product)
 									<div class="ltabs-item">
 									<div class="item-inner product-layout transition product-grid">
 										<div class="product-item-container">
@@ -579,13 +653,16 @@
 										<div class="right-block">
 											<div class="caption">
 											<h4>
-												<a href="#" title="Invisible Hidden Spy Earphone Micro Wireless" target="_self">{{ $product->title }}</a>
+												<a href="{{ route('products.show', ['product' => $product->id]) }}" title="{{ $product->title }}" target="_self">{{ $product->title }}</a>
 											</h4>
 											<div class="total-price clearfix">
 												<div class="price price-left">
-												<span class="price-new">{{ $product->price }}</span>
-												<span class="price-old">{{ sprintf('%.02f',$product->price * 0.8) }}</span>
+												<span class="price-new">{{ sprintf('%.02f',$product->price * 0.8) }}</span>
+												<span class="price-old">{{ $product->price }}</span>
 												</div>
+                        <div class="price-sale price-right">
+                        <span class="discount 123">-20%<strong>OFF</strong></span>
+                        </div>
 											</div>
 											</div>
 											<div class="button-group">
@@ -629,7 +706,7 @@
 				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col_mfpr  block block_7 title_neo4">
 					<div class="module so-listing-tabs-ltr home1-lt-style3 default-nav clearfix img-float home-lt1">
 					<div class="head-title font-ct">
-						<h2 class="modtitle">{{ $keys[2] }}</h2>
+						<h2 class="modtitle">{{ $keys[3] }}</h2>
 					</div>
 					<div class="modcontent">
 						<div id="so_listing_tabs_3" class="so-listing-tabs first-load">
@@ -645,8 +722,8 @@
 							<div class="ltabs-items-container">
 								<div class="ltabs-items ltabs-items-selected items-category-4" data-total="16">
 									<div class="ltabs-items-inner ltabs-slider">
-                    @isset($products['外设产品'])
-                    @foreach( $products['外设产品'] as $product)
+                    @isset($products['游戏设备'])
+                    @foreach( $products['游戏设备'] as $product)
 										<div class="ltabs-item">
 											<div class="item-inner product-layout transition product-grid">
 												<div class="product-item-container">
@@ -663,12 +740,12 @@
 												<div class="right-block">
 													<div class="caption">
 													<h4>
-														<a href="{{ route('products.show', ['product' => $product->id]) }}" title="Bougainvilleas On Lombard Street, San Francisco, Tokyo" target="_self">{{ $product->title }}</a>
+														<a href="{{ route('products.show', ['product' => $product->id]) }}" title="" target="_self">{{ $product->title }}</a>
 													</h4>
 													<div class="total-price clearfix">
 														<div class="price price-left">
-														<span class="price-new">{{ $product->price }}</span>
-														<span class="price-old">{{ sprintf('%.02f',$product->price * 0.8) }}</span>
+														<span class="price-new">{{ sprintf('%.02f',$product->price * 0.8) }}</span>
+														<span class="price-old">{{ $product->price }}</span>
 														</div>
 														<div class="price-sale price-right">
 														<span class="discount 123">-20%<strong>OFF</strong></span>
@@ -717,7 +794,7 @@
 					<div class="module so-listing-tabs-ltr home1-lt-style4 default-nav clearfix img-float home-lt1">
 					<div class="head-title font-ct">
 						<h2 class="modtitle">
-						<span>{{ $keys[3] }}</span>
+						<span>{{ $keys[4] }}</span>
 						</h2>
 					</div>
 					<div class="modcontent">
@@ -732,8 +809,8 @@
 								<!--Begin Items-->
 								<div class="ltabs-items ltabs-items-selected items-category-1" data-total="16">
 								<div class="ltabs-items-inner ltabs-slider ">
-                  @isset($products['游戏设备'])
-                  @foreach($products['游戏设备'] as $product)
+                  @isset($products['手机配件'])
+                  @foreach($products['手机配件'] as $product)
 									<div class="ltabs-item">
 									<div class="item-inner product-layout transition product-grid">
 										<div class="product-item-container">
@@ -750,8 +827,8 @@
 											<h4><a href="{{ route('products.show', ['product' => $product->id]) }}" title="{{ $product->title }}" target="_self">{{$product->title}}</a></h4>
 											<div class="total-price clearfix">
 												<div class="price price-left">
-                          <span class="price-new">{{ $product->price }}</span>
-                          <span class="price-old">{{ sprintf('%.02f',$product->price * 0.8) }}</span>
+                          <span class="price-new">{{ sprintf('%.02f',$product->price * 0.8) }}</span>
+                          <span class="price-old">{{ $product->price }}</span>
                         </div>
 												<div class="price-sale price-right"><span class="discount 123">-20%<strong>OFF</strong></span></div>
 											</div>
