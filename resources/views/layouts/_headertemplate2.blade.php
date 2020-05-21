@@ -16,7 +16,7 @@ li > a::before {
           <div class="row">
              <div class="col-lg-3 col-md-3 col-xs-4 header-logo ">
                 <div class="navbar-logo">
-                   <a href="{{ route('products.index') }}"><img src="{{URL::asset('images/catalog/demo/logo/logo-2.png')}}" alt="Your Store" width="110" height="27" title="Your Store"></a>
+                   <a href="{{ route('products.index') }}"><img src="{{URL::asset('images/logo1.jpg')}}" alt="Your Store" width="110" height="27" title="Your Store"></a>
                 </div>
              </div>
              <div class="col-lg-7 col-md-6">

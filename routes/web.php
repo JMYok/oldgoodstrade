@@ -21,7 +21,7 @@ Route::view('/test/wishlist','pages/newpages/wishlist');
 
 
 
-/*商品主页\搜索页*/
+/*商品主页、搜索页*/
 Route::get('products', 'ProductsController@index')->name('products.index');
 Route::get('s_products', 'ProductsController@search')->name('products.search');
 

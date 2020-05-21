@@ -1,7 +1,7 @@
 @if(isset($category['children']) && count($category['children']) > 0)
   <li class="item-vertical css-menu with-sub-menu hover">
     <p class="close-menu"></p>
-    <a href="{{ route('products.index', ['category_id' => $category['id']]) }}"  class="clearfix main-menu" style="margin-left:0px !important;">
+    <a href="{{ route('products.search', ['category_id' => $category['id']]) }}"  class="clearfix main-menu" style="margin-left:0px !important;">
       <span>
       <strong style="font-weight:bold !important;">{{ $category['name'] }}</strong>
       </span>
@@ -30,6 +30,6 @@
   </li>
 @else
   <li>
-      <a href="{{ route('products.index', ['category_id' => $category['id']]) }}">{{ $category['name'] }}</a>
+      <a href="{{ route('products.search', ['category_id' => $category['id']]) }}">{{ $category['name'] }}</a>
   </li>
 @endif
