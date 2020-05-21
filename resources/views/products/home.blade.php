@@ -273,7 +273,7 @@
 					<div class="home4-banner-1 row clearfix ">
 						<div class="item-1 col-lg-4 col-md-4 col-sm-4 col-xs-6 mrb-30 banners">
 							<div>
-								<a  id="coupon" title="Static Image"><img src="{{URL::asset('images/coupon1.png')}}" alt="coupon Image"></a>
+								<a href="{{ route('coupon_codes.index') }}"  id="coupon" title="Static Image"><img src="{{URL::asset('images/coupon1.png')}}" alt="coupon Image"></a>
 							</div>
 						</div>
 						<div class="item-2 col-lg-4 col-md-4 col-sm-4 col-xs-6 mrb-30 banners">
@@ -815,7 +815,7 @@
 </script>
 <script type="text/javascript" src="{{ URL::asset('js/bootstrap.min.js') }}"></script>
 
-<script>
+<!-- <script>
   $(document).ready(function () {
      // 监听收藏按钮的点击事件
      // $('.btn-favor').click(function () {
@@ -845,5 +845,5 @@
        })
      });
  });
- </script>
+ </script> -->
   </script>

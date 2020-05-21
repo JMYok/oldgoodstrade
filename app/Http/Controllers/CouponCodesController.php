@@ -28,6 +28,6 @@ class CouponCodesController extends Controller
                       ->whereColumn('used','<','total')
                       ->whereDate('not_before','<=',$time)
                       ->whereDate('not_after','>=',$time)->get();
-    return json_encode($data);
+    return view('pages.coupons',['coupons'=> $data]);
   }
 }

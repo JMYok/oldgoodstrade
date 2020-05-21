@@ -13,13 +13,8 @@
 
 Route::redirect('/', '/products')->name('root');
 
-Route::view('/test/orderinformation','pages/newpages/orderinformation');
-Route::view('/test/wishlist','pages/newpages/wishlist');
-
-
-
+//查看所有优惠券
 Route::get('coupon_index','CouponCodesController@index')->name('coupon_codes.index');
-
 
 
 /*商品主页、搜索页*/
