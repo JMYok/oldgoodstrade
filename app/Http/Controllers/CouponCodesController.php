@@ -19,4 +19,15 @@ class CouponCodesController extends Controller
 
       return $record;
   }
+
+  //所有可用优惠券
+  public function index(){
+    //获取当前时间
+    $time = Carbon::now();
+    $data = CouponCode::where('enabled',1)
+                      ->whereColumn('used','<','total')
+                      ->whereDate('not_before','<=',$time)
+                      ->whereDate('not_after','>=',$time)->get();
+    return json_encode($data);
+  }
 }

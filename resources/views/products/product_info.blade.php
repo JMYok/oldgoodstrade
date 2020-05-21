@@ -68,7 +68,7 @@
         					  <div class="class-honizol">
         						 <div class="box-label">
         							<span class="label-product label-sale">
-        							-30%
+        							-20%
         							</span>
         						 </div>
         						 <img class="product-image-zoom" src="{{ $product->image_url }}"  title="{{ $product->title }}">
@@ -109,8 +109,8 @@
         						 </div>
         					  </div>
         					  <div class="product_page_price price" itemscope="" itemtype="">
-                      <span class="price-new">{{ $product->price }}</span>
-                      <span class="price-old">{{ sprintf('%.2f',$product->price * 0.8) }}</span>
+                      <span class="price-new">{{ sprintf('%.2f',$product->price * 0.8) }}</span>
+                      <span class="price-old">{{ $product->price }}</span>
         					  </div>
         					  <div class="product-box-desc">
         						 <div class="inner-box-desc">

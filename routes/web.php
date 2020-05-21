@@ -18,6 +18,7 @@ Route::view('/test/wishlist','pages/newpages/wishlist');
 
 
 
+Route::get('coupon_index','CouponCodesController@index')->name('coupon_codes.index');
 
 
 

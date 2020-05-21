@@ -74,12 +74,11 @@
               @else
               @foreach($products as $product)
 							<div class="product-layout  col-lg-3 col-md-3 col-sm-3 col-xs-3" style="height:60% !important;">
-								<div class="product-item-container" style="height:80% !important;">
+								<div class="product-item-container" style="height:90% !important;">
 									<div class="left-block">
 										<div class="product-image-container second_img  ">
-											<a href="{{ route('products.show', ['product' => $product->id]) }}" title="Compact Portable Charger (Power Bank) with Premium ">
+											<a href="{{ route('products.show', ['product' => $product->id]) }}" title="{{ $product->title }}">
 												<img src="{{ $product->image_url }}" alt="{{ $product->description }}" title="{{ $product->title }}" class="img-1 img-responsive">
-												<img src="{{ $product->image_url }}" alt="{{ $product->description }}" title="{{ $product->title }}" class="img-2 img-responsive">
 											</a>
 										</div>
 
@@ -89,7 +88,7 @@
 											<h4><a href="{{ route('products.show', ['product' => $product->id]) }}">{{ $product->title }}</a></h4>
 											<div class="total-price">
 												<div class="price price-left">
-													<span class="price-new">{{ $product->price }}</span><span class="price-old">{{ sprintf('%.2f',$product->price * 0.8) }}</span>
+													<span class="price-new">{{ sprintf('%.2f',$product->price * 0.8) }}</span><span class="price-old">{{ $product->price }}</span>
 												</div>
 											</div>
 
@@ -145,6 +144,6 @@ console.log(products);
       });
 
       //分页状态展示
-      $('span #currentPage').text("text");
+      // $('span #currentPage').text("text");
     })
 </script>
